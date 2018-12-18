@@ -1,21 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+
+<!-- Mirrored from www.ansonika.com/findoctor/menu_2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Nov 2018 22:08:55 GMT -->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="Find easily a doctor and book online an appointment">
+	<meta name="author" content="Ansonika">
+	<title>FINDOCTOR - Find easily a doctor and book online an appointment</title>
+
+	<!-- Favicons-->
+	<link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+	<link rel="apple-touch-icon" type="image/x-icon" href="img/apple-touch-icon-57x57-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="72x72" href="img/apple-touch-icon-72x72-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="114x114" href="img/apple-touch-icon-114x114-precomposed.png">
+	<link rel="apple-touch-icon" type="image/x-icon" sizes="144x144" href="img/apple-touch-icon-144x144-precomposed.png">
+
+	<!-- BASE CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
+	<link href="css/menu.css" rel="stylesheet">
+	<link href="css/vendors.css" rel="stylesheet">
+	<link href="css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
+    
+	<!-- YOUR CUSTOM CSS -->
+	<link href="css/custom.css" rel="stylesheet">
+
+</head>
 
 <body>
-	
-	<div id="preloader" class="Fixed">
+
+	<div class="layer"></div>
+	<!-- Mobile menu overlay mask -->
+
+	<div id="preloader">
 		<div data-loader="circle-side"></div>
 	</div>
-	<!-- /Preload-->
-	
-	<div id="page">		
-	<header class="header_sticky">	
-		<a href="#menu" class="btn_mobile">
-			<div class="hamburger hamburger--spin" id="hamburger">
-				<div class="hamburger-box">
-					<div class="hamburger-inner"></div>
-				</div>
-			</div>
-		</a>
-		<!-- /btn_mobile-->
+	<!-- End Preload -->
+    
+	<header class="header_sticky">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-3 col-6">
@@ -23,15 +48,16 @@
 						<h1><a href="index.html" title="Findoctor">Findoctor</a></h1>
 					</div>
 				</div>
-				<div class="col-lg-9 col-6">
+				<nav class="col-lg-9 col-6">
+					<a class="cmn-toggle-switch cmn-toggle-switch__htx open_close" href="#0"><span>Menu mobile</span></a>
 					<ul id="top_access">
 						<li><a href="login.html"><i class="pe-7s-user"></i></a></li>
 						<li><a href="register-doctor.html"><i class="pe-7s-add-user"></i></a></li>
 					</ul>
-					<nav id="menu" class="main-menu">
+					<div class="main-menu">
 						<ul>
-							<li>
-								<span><a href="#0">Home</a></span>
+							<li class="submenu">
+								<a href="#0" class="show-submenu">Home<i class="icon-down-open-mini"></i></a>
 								<ul>
 									<li><a href="index.html">Home Default</a></li>
 									<li><a href="index-2.html">Home Version 2</a></li>
@@ -41,8 +67,8 @@
 									<li><a href="index-5.html">With Cookie Bar (EU law)</a></li>
 								</ul>
 							</li>
-							<li>
-								<span><a href="#0">Pages</a></span>
+							<li class="submenu">
+								<a href="#0" class="show-submenu">Pages<i class="icon-down-open-mini"></i></a>
 								<ul>
 									<li><a href="list.html">List page</a></li>
 									<li><a href="grid-list.html">List grid page</a></li>
@@ -59,8 +85,8 @@
 									<li><a href="contacts.html">Contacts</a></li>
 								</ul>
 							</li>
-							<li>
-								<span><a href="#0">Extra Elements</a></span>
+							<li class="submenu">
+								<a href="#0" class="show-submenu">Extra Elements<i class="icon-down-open-mini"></i></a>
 								<ul>
                                 	<li><a href="detail-page-working-booking.html">Detail working booking</a></li>
                                     <li><a href="booking-page.html">Booking page</a></li>
@@ -76,13 +102,13 @@
 									<li><a href="404.html">404 page</a></li>
 								</ul>
 							</li>
-                            <li><span><a href="menu_2/index.html">Menu V2</a></span></li>
-							<li><span><a href="admin_section/index.html" target="_blank">Admin</a></span></li>
-							<li><span><a href="https://themeforest.net/item/findoctor-doctors-directory-and-book-online-template/20876478?ref=ansonika">Buy this template</a></span></li>
+							<li><a href="../index.html">Menu V1</a></li>
+							<li><a href="../admin_section/index.html" target="_blank">Admin</a></li>
+							<li><a href="https://themeforest.net/item/findoctor-doctors-directory-and-book-online-template/20876478?ref=ansonika">Buy this template</a></li>
 						</ul>
-					</nav>
+					</div>
 					<!-- /main-menu -->
-				</div>
+				</nav>
 			</div>
 		</div>
 		<!-- /container -->
@@ -96,7 +122,7 @@
 				<p>
 					Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
 				</p>
-				<form method="post" action="http://www.ansonika.com/findoctor/list.html">
+				<form method="post" action="http://www.ansonika.com/findoctor/menu_2/list.html">
 					<div id="custom-search-input">
 						<div class="input-group">
 							<input type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">
@@ -167,7 +193,7 @@
 							<div class="views"><i class="icon-eye-7"></i>140</div>
 							<div class="title">
 								<h4>Dr. Julia Holmes<em>Pediatrician - Cardiologist</em></h4>
-							</div><img src="assets/img/doctor_1_carousel.jpg" alt="">
+							</div><img src="img/doctor_1_carousel.jpg" alt="">
 						</a>
 					</div>
 					<div class="item">
@@ -175,7 +201,7 @@
 							<div class="views"><i class="icon-eye-7"></i>120</div>
 							<div class="title">
 								<h4>Dr. Julia Holmes<em>Pediatrician</em></h4>
-							</div><img src="assets/img/doctor_2_carousel.jpg" alt="">
+							</div><img src="img/doctor_2_carousel.jpg" alt="">
 						</a>
 					</div>
 					<div class="item">
@@ -183,7 +209,7 @@
 							<div class="views"><i class="icon-eye-7"></i>115</div>
 							<div class="title">
 								<h4>Dr. Julia Holmes<em>Pediatrician</em></h4>
-							</div><img src="assets/img/doctor_3_carousel.jpg" alt="">
+							</div><img src="img/doctor_3_carousel.jpg" alt="">
 						</a>
 					</div>
 					<div class="item">
@@ -191,7 +217,7 @@
 							<div class="views"><i class="icon-eye-7"></i>98</div>
 							<div class="title">
 								<h4>Dr. Julia Holmes<em>Pediatrician</em></h4>
-							</div><img src="assets/img/doctor_4_carousel.jpg" alt="">
+							</div><img src="img/doctor_4_carousel.jpg" alt="">
 						</a>
 					</div>
 					<div class="item">
@@ -199,7 +225,7 @@
 							<div class="views"><i class="icon-eye-7"></i>98</div>
 							<div class="title">
 								<h4>Dr. Julia Holmes<em>Pediatrician</em></h4>
-							</div><img src="assets/img/doctor_5_carousel.jpg" alt="">
+							</div><img src="img/doctor_5_carousel.jpg" alt="">
 						</a>
 					</div>
 				</div>
@@ -264,7 +290,7 @@
 			<div class="container">
 				<div class="row justify-content-around">
 					<div class="col-md-5">
-						<p><img src="assets/img/app_img.svg" alt="" class="img-fluid" width="500" height="433"></p>
+						<p><img src="img/app_img.svg" alt="" class="img-fluid" width="500" height="433"></p>
 					</div>
 					<div class="col-md-6">
 						<small>Application</small>
@@ -276,8 +302,8 @@
 							<path stroke-linecap="round" stroke-linejoin="round" class="draw-arrow tail-1" d="M40.6,78.1C39,71.3,37.2,64.6,35.2,58" />
 							<path stroke-linecap="round" stroke-linejoin="round" class="draw-arrow tail-2" d="M39.8,78.5c-7.2,1.7-14.3,3.3-21.5,4.9" />
 						</svg>
-							<a href="#0" class="fadeIn"><img src="assets/img/apple_app.png" alt="" width="150" height="50" data-retina="true"></a>
-							<a href="#0" class="fadeIn"><img src="assets/img/google_play_app.png" alt="" width="150" height="50" data-retina="true"></a>
+							<a href="#0" class="fadeIn"><img src="img/apple_app.png" alt="" width="150" height="50" data-retina="true"></a>
+							<a href="#0" class="fadeIn"><img src="img/google_play_app.png" alt="" width="150" height="50" data-retina="true"></a>
 						</div>
 					</div>
 				</div>
@@ -295,7 +321,7 @@
 				<div class="col-lg-3 col-md-12">
 					<p>
 						<a href="index.html" title="Findoctor">
-							<img src="assets/img/logo.png" data-retina="true" alt="" width="163" height="36" class="img-fluid">
+							<img src="img/logo.png" data-retina="true" alt="" width="163" height="36" class="img-fluid">
 						</a>
 					</p>
 				</div>
@@ -352,14 +378,17 @@
 		</div>
 	</footer>
 	<!--/footer-->
-	</div>
-	<!-- page -->
 
 	<div id="toTop"></div>
 	<!-- Back to top button -->
 
 	<!-- COMMON SCRIPTS -->
-
+	<script src="js/jquery-2.2.4.min.js"></script>
+	<script src="js/common_scripts.min.js"></script>
+	<script src="js/functions.js"></script>
 
 </body>
 
+
+<!-- Mirrored from www.ansonika.com/findoctor/menu_2/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Sat, 10 Nov 2018 22:09:26 GMT -->
+</html>
