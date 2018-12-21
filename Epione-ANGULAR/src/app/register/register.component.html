@@ -4,23 +4,29 @@
     <div class="container margin_120_95">			
       <div class="row">
         <div class="col-lg-6">
+            <div id="pass-info" class="clearfix"></div>
+            <div id="pass-info" class="clearfix"></div>
           <h1>Please register to Epione!</h1>
+          <div id="pass-info" class="clearfix"></div>
           <p class="lead">Now you can help us improve the quality of healthcare delivery and manage medical appointments linking patients and doctors</p>
           <div class="box_feat_2">
+              <div id="pass-info" class="clearfix"></div>
             <i class="pe-7s-map-2"></i>
             <h3>Find doctors!</h3>
             <p>This is your easiest way to book doctors online and take appointments </p>
           </div>
           <div class="box_feat_2">
+              <div id="pass-info" class="clearfix"></div>
             <i class="pe-7s-date"></i>
             <h3>Easly manage your appointments</h3>
-            <p>Epione will be your smart assistant for hospital operating rooms</p>
+            <p>Epione will be your smart assistant for hospital operating rooms, it will help you to easily contact your doctors and manage appointments with them.</p>
           </div>
           <div class="box_feat_2">
+              <div id="pass-info" class="clearfix"></div>
             <i class="pe-7s-phone"></i>
             <h3>Instantly via Mobile</h3>
-            <p>Eos eu epicuri eleifend suavitate, te primis placerat suavitate his. Nam ut dico intellegat reprehendunt, everti audiam diceret in pri, id has clita consequat suscipiantur.</p>
-          </div>
+       <p>You can also find our mobile booking platform Epione on your GoogleStore or AppStore.</p>   
+       </div>
         </div>
         <!-- /col -->
         <div class="col-lg-5 ml-auto">
@@ -30,11 +36,13 @@
               <div class="row">
                 <div class="col-md-6 ">
                   <div class="form-group">
-                    <input formControlName="firstName" type="text" class="form-control" placeholder="first Name">
+                      <label >Name</label> <label style="color : red"> *</label>
+                    <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
+                      <label>Last Name</label><label style="color : red"> *</label>
                     <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
                   </div>
                 </div>
@@ -43,12 +51,14 @@
               <div class="row">
                   <div class="col-md-6 ">
                     <div class="form-group">
-                      <input formControlName="email" type="email" class="form-control" placeholder="email">
+                        <label>Email</label><label style="color : red"> *</label>
+                      <input formControlName="email" type="email" class="form-control" placeholder="Email">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input formControlName="password" type="password" class="form-control" placeholder="password">
+                        <label>Mobile phone</label><label style="color : red"> *</label>
+                      <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Mobile Phone">
                     </div>
                   </div>
                 </div>
@@ -58,26 +68,33 @@
               <div class="row">
                 <div class="col-md-6">
                   <div class="form-group">
-                    <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Mobile Phone">
+                      <label>Password</label><label style="color : red"> *</label>
+                    <input formControlName="password" type="password" class="form-control" placeholder="Password" >
                   </div>
                 </div>
-                <div class="col-md-6">
-                  <div class="form-group">
-                    <input formControlName="codePostal" type="text" class="form-control" placeholder="code Postal">
-                  </div>
-                </div>
-              </div>
 
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label>Confirm Password</label><label style="color : red"> *</label>
+                      <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" >
+                    </div>
+                  </div>
+
+              </div>
+              <hr>
+              
                <!-- /row -->
                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input formControlName="numAppart" type="text" class="form-control" placeholder="Numero Appartement">
+                      <label>Appartment number</label>
+                      <input formControlName="numAppart" type="text" class="form-control" placeholder="Appartment number">
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input formControlName="rue" type="text" class="form-control" placeholder="Rue">
+                        <label>Street</label>
+                      <input formControlName="rue" type="text" class="form-control" placeholder="Street">
                     </div>
                   </div>
                 </div>
@@ -87,15 +104,21 @@
                <div class="row">
                   <div class="col-md-6">
                     <div class="form-group">
-                      <input formControlName="ville" type="text" class="form-control" placeholder="Ville">
+                        <label>City</label>
+                      <input formControlName="ville" type="text" class="form-control" placeholder="City">
                     </div>
                   </div> 
+                  <div class="col-md-6">
+                      <div class="form-group">
+                          <label>Postal code</label>
+                        <input formControlName="codePostal" type="text" class="form-control" placeholder="Postal code">
+                      </div>
+                    </div>
                 </div>
 
               <!-- /row -->
-              {{ErrorMsg}}
+            {{ErrorMsg}}
               <p class="text-center add_top_30"><input type="submit" class="btn_1" value="Submit"></p>
-              <div class="text-center"><small>Ut nam graece accumsan cotidieque. Has voluptua vivendum accusamus cu. Ut per assueverit temporibus dissentiet.</small></div>
             </form>
           </div>
           <!-- /box_form -->
@@ -112,3 +135,7 @@
 </main>
 
 
+
+<!--  ******************************************************************************************  -->
+
+	

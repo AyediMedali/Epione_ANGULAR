@@ -15,16 +15,19 @@
 						<ul>
 							<li>You are :   </li>
 							<li>
-								<input type="radio" id="all" name="radio_search" value="all" checked>
-								<label for="all">Admin</label>
+								<a routerLink="loginAdmin">
+								<input type="radio" id="all" name="rado_search" value="all"  >
+								<label for="all" >Admin</label> </a>
 							</li>
 							<li>
+									<a routerLink="loginDoctor">
 								<input type="radio" id="doctor" name="radio_search" value="doctor">
-								<label for="doctor">Doctor</label>
+								<label for="doctor">Doctor</label></a>
 							</li>
 							<li>
+									<a routerLink="loginPatient">
 								<input type="radio" id="clinic" name="radio_search" value="clinic">
-								<label for="clinic">Patient</label>
+								<label for="clinic">Patient</label></a>
 							</li>
 						</ul>
 					</div>
