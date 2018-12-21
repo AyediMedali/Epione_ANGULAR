@@ -18,6 +18,11 @@ export class UserService {
     return this.http.post(this.url+"logIn?email="+email+"&password="+password,null);
 
   }
+  SignDoctor(user : any) 
+  {
+    console.log(user) ;
+    return this.http.post(this.url+"signInPatient" , user) ;
+  }
   getUsers()
   {
   }
