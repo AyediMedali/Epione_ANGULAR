@@ -1,0 +1,35 @@
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder } from '@angular/forms';
+import { UserService } from 'src/app/services/user.service';
+
+@Component({
+  selector: 'app-login-doctor',
+  templateUrl: './login-doctor.component.html',
+  styleUrls: ['./login-doctor.component.css']
+})
+export class LoginDoctorComponent implements OnInit {
+
+  constructor(private fb:FormBuilder , private userService:UserService) { }
+
+  form = this.fb.group({
+    email : ['' ] ,
+    password: [''] 
+  })
+  user : Object ;
+  ngOnInit() {
+    
+  }
+
+  OnSubmit()
+  {
+    let email =  this.form.get('email').value ;
+    let password = this.form.get('password').value;
+    this.userService.LoginDoctor(email,password).subscribe( 
+      (Data) => {
+        console.log(Data);
+      }
+    )
+   
+  }
+
+}

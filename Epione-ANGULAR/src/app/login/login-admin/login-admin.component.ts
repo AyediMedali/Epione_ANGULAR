@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
-import { UserService } from '../services/user.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginAdminComponent implements OnInit {
 
-test ;
   constructor(private fb:FormBuilder , private userService:UserService) { }
 
   form = this.fb.group({
@@ -17,20 +16,21 @@ test ;
     password: [''] 
   })
   user : Object ;
-  ngOnInit() {
-    
-  }
+
 
   OnSubmit()
   {
     let email =  this.form.get('email').value ;
     let password = this.form.get('password').value;
-    this.userService.LoginUser(email,password).subscribe( 
+    this.userService.LoginAdmin(email,password).subscribe( 
       (Data) => {
         console.log(Data);
       }
     )
    
+  }
+
+  ngOnInit() {
   }
 
 }
