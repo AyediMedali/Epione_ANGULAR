@@ -10,6 +10,8 @@ import { Router } from '@angular/router';
 })
 export class LoginAdminComponent implements OnInit {
 
+  ErrorMsg="" ;
+
   constructor(private fb:FormBuilder , private userService:UserService, private router : Router) { }
 
   form = this.fb.group({
@@ -25,6 +27,11 @@ export class LoginAdminComponent implements OnInit {
     let password = this.form.get('password').value;
     this.userService.LoginAdmin(email,password).subscribe( 
       (Data) => {
+        if(Data && Data['id']>0)
+        this.router.navigate(['home']) ;
+        else { 
+          this.ErrorMsg="A problem occured , check your informations" ;
+        }
         this.router.navigate(['home']) ;
         console.log(Data);
       }
