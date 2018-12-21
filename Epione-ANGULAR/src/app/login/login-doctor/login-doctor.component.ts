@@ -31,7 +31,7 @@ export class LoginDoctorComponent implements OnInit {
         if(Data && Data['id']>0)
         this.router.navigate(['home']) ;
         else { 
-          this.ErrorMsg="A problem occured , check your informations" ;
+          this.ErrorMsg="Your password is incorrect" ;
         }
         console.log(Data);
       }
