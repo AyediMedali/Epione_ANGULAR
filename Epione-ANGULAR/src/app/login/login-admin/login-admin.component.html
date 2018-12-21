@@ -12,6 +12,7 @@
             <div class="form-group">
               <input formControlName="password" type="password" class="form-control" placeholder="Your password">
             </div>
+            {{ErrorMsg}}
             <a href="#0"><small>Forgot password?</small></a>
             <div class="form-group text-center add_top_20">
               <input class="btn_1 medium" type="submit" [disabled]="!form.valid" value="Login">

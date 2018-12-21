@@ -12,8 +12,9 @@ export class LoginDoctorComponent implements OnInit {
 
   constructor(private fb:FormBuilder , private userService:UserService, private router : Router) { }
 
+  ErrorMsg="" ;
   form = this.fb.group({
-    email : ['' ] ,
+    email : [''] ,
     password: [''] 
   })
   user : Object ;
@@ -27,8 +28,11 @@ export class LoginDoctorComponent implements OnInit {
     let password = this.form.get('password').value;
     this.userService.LoginDoctor(email,password).subscribe( 
       (Data) => {
-        //if(Data.toString.)
+        if(Data && Data['id']>0)
         this.router.navigate(['home']) ;
+        else { 
+          this.ErrorMsg="A problem occured , check your informations" ;
+        }
         console.log(Data);
       }
     )

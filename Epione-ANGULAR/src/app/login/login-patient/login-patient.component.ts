@@ -9,6 +9,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./login-patient.component.css']
 })
 export class LoginPatientComponent implements OnInit {
+  ErrorMsg="" ;
 
   constructor(private fb:FormBuilder , private userService:UserService, private router : Router) { }
 
@@ -27,6 +28,11 @@ export class LoginPatientComponent implements OnInit {
     let password = this.form.get('password').value;
     this.userService.LoginPatient(email,password).subscribe( 
       (Data) => {
+        if(Data && Data['id']>0)
+        this.router.navigate(['home']) ;
+        else { 
+          this.ErrorMsg="A problem occured , check your informations" ;
+        }
         this.router.navigate(['home']) ;
         console.log(Data);
       }
