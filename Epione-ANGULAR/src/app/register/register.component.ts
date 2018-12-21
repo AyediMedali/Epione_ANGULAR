@@ -56,8 +56,6 @@ export class RegisterComponent implements OnInit {
       }
     };
 
-
-    
     this.userService.SignDoctor(user).subscribe( 
       (Data) => {
         console.log(Data['id']);
@@ -65,18 +63,28 @@ export class RegisterComponent implements OnInit {
         if(!Data['id'] || Data['id']==0)
         {
           if(Data['error'])
+          {
           this.ErrorMsg = Data['error'] ;
-
-          else {
-          this.ErrorMsg = "And error occured during sign in" ;
           }
         }
-        else {
+          else {
+            if(Data['error'])
+          {
+            if(Data['error']=="Email existe deja !")
+            this.ErrorMsg="Email already exist"
+          }
+          this.ErrorMsg = "And error occured during sign in" ;
+          }
+        
+
+
+        if(Data['id']>0) {
           this.router.navigate(['home']) ;
         }
       }
     )
-   
+
+
   }
 
 }
