@@ -8,12 +8,14 @@ import { RoutesModule } from './routes/routes.module';
 import { HomeComponent } from './home/home.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
 import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { RegisterComponent } from './register/register.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    RegisterComponent
   ],
   imports: [
     BrowserModule,
