@@ -64,7 +64,12 @@ export class RegisterComponent implements OnInit {
 
         if(!Data['id'] || Data['id']==0)
         {
+          if(Data['error'])
+          this.ErrorMsg = Data['error'] ;
+
+          else {
           this.ErrorMsg = "And error occured during sign in" ;
+          }
         }
         else {
           this.router.navigate(['home']) ;
