@@ -3,6 +3,8 @@ import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { UserService } from '../services/user.service';
 import { user } from '../entities/user';
 import { Router } from '@angular/router';
+import { PasswordValidation } from './MatchPassword';
+//import { PasswordValidation } from './password-validation';
 
 @Component({
   selector: 'app-register',
@@ -18,13 +20,17 @@ export class RegisterComponent implements OnInit {
   constructor(private fb:FormBuilder , private userService:UserService , private router:Router) { }
 
 
-  checkPasswords() {
+ /* checkPasswords() {
     let pass = this.form.get('password').value ; 
   let confirmPass = this.form.get('confirmPassword').value ; 
 
-  return pass === confirmPass ? null : { notSame: true }  
-  console.log("pass"+pass) ;   
-  }
+ if(pass != confirmPass) {
+  console.log('false');
+  this.form.get('confirmPassword').setErrors( {checkPasswords: true} )
+} else {
+  console.log('true');
+  return null ; }   
+  }*/
 
   form = this.fb.group({
     email : ['', Validators.required]  ,
@@ -37,7 +43,7 @@ export class RegisterComponent implements OnInit {
     numAppart : [''],
     rue : [''] ,
     ville : [''] 
-  },{validators: this.checkPasswords })
+  },{validator: PasswordValidation.MatchPassword })
 
 
   ngOnInit() {
@@ -86,7 +92,7 @@ export class RegisterComponent implements OnInit {
             else if(Data['error']=="Le mot de passe doit contenir au moins un caractere en majuscule")
             this.ErrorMsg = "Your password should contain at least an upper case" ; 
   } else if(Data['id']>0) {
-      this.router.navigate(['home']) ;
+     // this.router.navigate(['home']) ;
     
   }
 

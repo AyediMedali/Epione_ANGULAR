@@ -93,7 +93,7 @@
                       <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" >
                       <div *ngIf="!form.controls['confirmPassword']?.valid && form.controls['confirmPassword']?.touched"
                       class="alert alert-danger" >confirm your password</div>
-                   
+                   <div *ngIf="form.controls.confirmPassword.errors?.MatchPassword" class="alert alert-danger" >Password mismatch!</div>
 
                       
                     </div>
