@@ -45,9 +45,7 @@ export class RegisterComponent implements OnInit {
 
   OnSubmit()
   {
-    /*if(this.form.get('confirmPassword')!=this.form.get('password')){
-    this.form.get('confirmPassword').updateValueAndValidity(); 
-    }*/
+    
     let email =  this.form.get('email').value ;
     let firstName =  this.form.get('firstName').value ;
     let lastName =  this.form.get('lastName').value ;
