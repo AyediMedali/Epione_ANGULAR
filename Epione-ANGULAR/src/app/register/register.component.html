@@ -1,5 +1,6 @@
 
  <main>
+
  <div id="hero_register">
     <div class="container margin_120_95">			
       <div class="row">
@@ -37,13 +38,17 @@
                 <div class="col-md-6 ">
                   <div class="form-group">
                       <label >Name</label> <label style="color : red"> *</label>
-                    <input formControlName="firstName" type="text" class="form-control" placeholder="First Name">
+                    <input formControlName="firstName" type="text" class="form-control" placeholder="First Name" required>
+                    <div *ngIf="!form.controls['firstName']?.valid && form.controls['firstName']?.touched"
+                    class="alert alert-danger" >First Name required</div>
                   </div>
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                       <label>Last Name</label><label style="color : red"> *</label>
-                    <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name">
+                    <input formControlName="lastName" type="text" class="form-control" placeholder="Last Name" required >
+                    <div *ngIf="!form.controls['lastName']?.valid && form.controls['lastName']?.touched"
+                    class="alert alert-danger" >Last Name required</div>
                   </div>
                 </div>
               </div>
@@ -53,12 +58,18 @@
                     <div class="form-group">
                         <label>Email</label><label style="color : red"> *</label>
                       <input formControlName="email" type="email" class="form-control" placeholder="Email">
+                      <div *ngIf="!form.controls['email']?.valid && form.controls['email']?.touched"
+                    class="alert alert-danger" >Email required</div>
+                     
+                     
                     </div>
                   </div>
                   <div class="col-md-6">
                     <div class="form-group">
                         <label>Mobile phone</label><label style="color : red"> *</label>
-                      <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Mobile Phone">
+                      <input formControlName="phoneNumber" type="text" class="form-control" placeholder="Mobile Phone" >
+                      <div *ngIf="!form.controls['phoneNumber']?.valid && form.controls['phoneNumber']?.touched"
+                    class="alert alert-danger" >Phone number required</div>
                     </div>
                   </div>
                 </div>
@@ -69,7 +80,10 @@
                 <div class="col-md-6">
                   <div class="form-group">
                       <label>Password</label><label style="color : red"> *</label>
-                    <input formControlName="password" type="password" class="form-control" placeholder="Password" >
+                    <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
+                    <div *ngIf="!form.controls['password']?.valid && form.controls['password']?.touched"
+                    class="alert alert-danger" >Password required</div>
+                   
                   </div>
                 </div>
 
@@ -77,12 +91,16 @@
                     <div class="form-group">
                         <label>Confirm Password</label><label style="color : red"> *</label>
                       <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" >
+                      <div *ngIf="!form.controls['confirmPassword']?.valid && form.controls['confirmPassword']?.touched"
+                      class="alert alert-danger" >confirm your password</div>
+                   
+
+                      
                     </div>
                   </div>
-
               </div>
-
-            <div style="color : red"> {{ErrorMsg}}</div> 
+            
+              <div  *ngIf="ErrorMsg" class="alert alert-danger" > {{ErrorMsg}}</div> 
               <hr>
               
                <!-- /row -->
@@ -120,7 +138,7 @@
 
               <!-- /row -->
             
-              <p class="text-center add_top_30"><input type="submit" class="btn_1" value="Submit"></p>
+              <p class="text-center add_top_30"><input type="submit" class="btn_1" value="Submit" ></p>
             </form>
           </div>
           <!-- /box_form -->

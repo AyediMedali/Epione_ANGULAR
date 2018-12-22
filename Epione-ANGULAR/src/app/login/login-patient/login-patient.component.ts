@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder } from '@angular/forms';
+import { FormBuilder, Validators } from '@angular/forms';
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
@@ -14,9 +14,11 @@ export class LoginPatientComponent implements OnInit {
   constructor(private fb:FormBuilder , private userService:UserService, private router : Router) { }
 
   form = this.fb.group({
-    email : ['' ] ,
-    password: [''] 
+    email : ['',Validators.required ] ,
+    password: ['', Validators.required] 
   })
+
+  
   user : Object ;
   ngOnInit() {
     
@@ -28,13 +30,12 @@ export class LoginPatientComponent implements OnInit {
     let password = this.form.get('password').value;
     this.userService.LoginPatient(email,password).subscribe( 
       (Data) => {
-        if(Data && Data['id']>0)
-        this.router.navigate(['home']) ;
-        else { 
-          this.ErrorMsg="Your password is incorrect" ;
+        if(Data['result']=="Verifier vos donnees"){
+          this.ErrorMsg="Incorrect! Please check your informations" ;
+        } 
+          else {
+          this.router.navigate(['home']) ;
         }
-        this.router.navigate(['home']) ;
-        console.log(Data);
       }
     )
    

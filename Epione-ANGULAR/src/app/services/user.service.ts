@@ -21,7 +21,7 @@ export class UserService {
   {
     return this.http.post(this.url+"logInPatient?email="+email+"&password="+password,null);
   }
-  SignDoctor(user : any) 
+  SignPatient(user : any) 
   {
     console.log(user) ;
     return this.http.post(this.url+"signInPatient" , user) ;

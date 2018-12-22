@@ -6,7 +6,7 @@ import { RouterModule } from '@angular/router';
 import { RoutesModule } from './routes/routes.module';
 import { HomeComponent } from './home/home.component';
 import {HttpClient, HttpClientModule} from '@angular/common/http';
-import { FormsModule , ReactiveFormsModule } from '@angular/forms';
+import { FormsModule , ReactiveFormsModule, Validators } from '@angular/forms';
 import { RegisterComponent } from './register/register.component';
 import { LoginAdminComponent } from './login/login-admin/login-admin.component';
 import { LoginDoctorComponent } from './login/login-doctor/login-doctor.component';
