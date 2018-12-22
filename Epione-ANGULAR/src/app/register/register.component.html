@@ -10,7 +10,7 @@
           <h1>Please register to Epione!</h1>
           <div id="pass-info" class="clearfix"></div>
           <p class="lead">Now you can help us improve the quality of healthcare delivery and manage medical appointments linking patients and doctors</p>
-          <div class="box_feat_2">
+          <div class="box_feat_2"> 
               <div id="pass-info" class="clearfix"></div>
             <i class="pe-7s-map-2"></i>
             <h3>Find doctors!</h3>
@@ -80,7 +80,13 @@
                 <div class="col-md-6">
                   <div class="form-group">
                       <label>Password</label><label style="color : red"> *</label>
-                    <input formControlName="password" type="password" class="form-control" placeholder="Password" required>
+                      <table>
+                        <tr>
+                          <td> <input formControlName="password" [type]="passwordType" class="form-control" placeholder="Password" required></td>
+                          <td><i [class]="icone" (click)="togglePassword()"></i></td>
+                        </tr>
+                      </table>
+                   
                     <div *ngIf="!form.controls['password']?.valid && form.controls['password']?.touched"
                     class="alert alert-danger" >Password required</div>
                    
@@ -90,9 +96,13 @@
                 <div class="col-md-6">
                     <div class="form-group">
                         <label>Confirm Password</label><label style="color : red"> *</label>
-                      <input formControlName="confirmPassword" type="password" class="form-control" placeholder="Confirm Password" >
-                      <div *ngIf="!form.controls['confirmPassword']?.valid && form.controls['confirmPassword']?.touched"
-                      class="alert alert-danger" >confirm your password</div>
+                        <table>
+                          <tr>
+                            <td><input formControlName="confirmPassword" [type]="confirmType" class="form-control" placeholder="Confirm Password" ></td>
+                            <td> <i [class]="iconeC" (click)="toggleConfirmPassword()"></i></td>
+                          </tr>
+                        </table>
+                      
                    <div *ngIf="form.controls.confirmPassword.errors?.MatchPassword" class="alert alert-danger" >Password mismatch!</div>
 
                       

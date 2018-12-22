@@ -13,7 +13,8 @@ const routes: Routes = [
   {path:'loginAdmin' ,component:LoginAdminComponent},
   {path:'loginPatient' ,component:LoginPatientComponent},
   {path:'loginDoctor' ,component:LoginDoctorComponent},
-  {path:'register', component:RegisterComponent}, 
+  {path:'register', component:RegisterComponent},
+  {path:'loginPatient/register', component:RegisterComponent},  
   {path:'**' , component:HomeComponent}
 ];
 

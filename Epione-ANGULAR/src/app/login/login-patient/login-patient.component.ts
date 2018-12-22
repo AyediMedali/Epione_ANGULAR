@@ -10,6 +10,9 @@ import { Router } from '@angular/router';
 })
 export class LoginPatientComponent implements OnInit {
   ErrorMsg="" ;
+  passwordType : string = 'password' ; 
+  passwordSeen : boolean = false ; 
+  icone : string = 'icon-eye' ; 
 
   constructor(private fb:FormBuilder , private userService:UserService, private router : Router) { }
 
@@ -17,6 +20,18 @@ export class LoginPatientComponent implements OnInit {
     email : ['',Validators.required ] ,
     password: ['', Validators.required] 
   })
+
+  togglePassword(){
+    if(this.passwordSeen){
+      this.passwordSeen = false ; 
+    this.passwordType = 'password' ;
+    this.icone = 'icon-eye' ;  
+  } else {
+    this.passwordSeen = true ; 
+    this.passwordType = 'text' ; 
+    this.icone = 'icon-eye-off' ; 
+  }
+  }
 
   
   user : Object ;

@@ -19,18 +19,12 @@ export class RegisterComponent implements OnInit {
 
   constructor(private fb:FormBuilder , private userService:UserService , private router:Router) { }
 
-
- /* checkPasswords() {
-    let pass = this.form.get('password').value ; 
-  let confirmPass = this.form.get('confirmPassword').value ; 
-
- if(pass != confirmPass) {
-  console.log('false');
-  this.form.get('confirmPassword').setErrors( {checkPasswords: true} )
-} else {
-  console.log('true');
-  return null ; }   
-  }*/
+  passwordType : string = 'password' ; 
+  passwordSeen : boolean = false ; 
+  confirmType : string = 'password' ; 
+  confirmSeen : boolean = false ; 
+  icone : string = 'icon-eye' ; 
+  iconeC : string = 'icon-eye' ; 
 
   form = this.fb.group({
     email : ['', Validators.required]  ,
@@ -44,6 +38,32 @@ export class RegisterComponent implements OnInit {
     rue : [''] ,
     ville : [''] 
   },{validator: PasswordValidation.MatchPassword })
+
+
+  
+  togglePassword(){
+    if(this.passwordSeen){
+      this.passwordSeen = false ; 
+    this.passwordType = 'password' ;
+    this.icone = 'icon-eye' ;  
+  } else {
+    this.passwordSeen = true ; 
+    this.passwordType = 'text' ; 
+    this.icone = 'icon-eye-off' ; 
+  }
+  }
+
+  toggleConfirmPassword(){
+    if(this.confirmSeen){
+      this.confirmSeen = false ; 
+    this.confirmType = 'password' ;
+    this.iconeC = 'icon-eye' ;  
+  } else {
+    this.confirmSeen = true ; 
+    this.confirmType = 'text' ; 
+    this.iconeC = 'icon-eye-off' ; 
+  }
+  }
 
 
   ngOnInit() {
