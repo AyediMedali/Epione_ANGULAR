@@ -4,6 +4,7 @@ import { UserService } from '../services/user.service';
 import { user } from '../entities/user';
 import { Router } from '@angular/router';
 import { PasswordValidation } from './MatchPassword';
+import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 //import { PasswordValidation } from './password-validation';
 
 @Component({
@@ -14,7 +15,9 @@ import { PasswordValidation } from './MatchPassword';
 export class RegisterComponent implements OnInit {
 
   ErrorMsg=""; 
- var : boolean = false ; 
+  imageURL : string = "/assets/img/profile.jpg" ;
+  fileToUpload : File = null ; 
+  var : boolean = false ; 
    
 
   constructor(private fb:FormBuilder , private userService:UserService , private router:Router) { }
@@ -31,7 +34,7 @@ export class RegisterComponent implements OnInit {
     firstName : ['',Validators.required] ,
     lastName : ['',Validators.required] ,
     password : ['',Validators.required] ,
-    confirmPassword : ['',Validators.required],
+    confirmPassword : [''],
     phoneNumber : ['',Validators.required],
     codePostal : [''] ,
     numAppart : [''],
@@ -39,6 +42,18 @@ export class RegisterComponent implements OnInit {
     ville : [''] 
   },{validator: PasswordValidation.MatchPassword })
 
+
+  handleFileInput(file : FileList){
+    this.fileToUpload = file.item(0) ; 
+    var reader = new FileReader() ; 
+    reader.onload = (event:any) => {
+      this.imageURL = event.target.result ; 
+      console.log("imageeeeeeeeeeeeeeeee"+event.target.result);
+      
+    }
+    reader.readAsDataURL(this.fileToUpload) ;
+    console.log("fileeeeeeeee"+this.fileToUpload);
+  }
 
   
   togglePassword(){
@@ -67,6 +82,7 @@ export class RegisterComponent implements OnInit {
 
 
   ngOnInit() {
+    this.imageURL="/assets/img/profile.jpg" ;
   }
 
   OnSubmit()
@@ -81,6 +97,8 @@ export class RegisterComponent implements OnInit {
     let numAppart =  this.form.get('numAppart').value ;
     let rue =  this.form.get('rue').value ;
     let ville =  this.form.get('ville').value ;
+    
+    
 
     let user:any = {
       "email" : email , 
@@ -88,6 +106,7 @@ export class RegisterComponent implements OnInit {
       "lastName" : lastName , 
       "password" : password, 
       "phoneNumber" : phoneNumber ,
+      "image" : this.fileToUpload.name ,
       "adresse" : {
         "codePostal" : codePostal , 
         "numAppart" : numAppart , 
@@ -112,7 +131,7 @@ export class RegisterComponent implements OnInit {
             else if(Data['error']=="Le mot de passe doit contenir au moins un caractere en majuscule")
             this.ErrorMsg = "Your password should contain at least an upper case" ; 
   } else if(Data['id']>0) {
-     // this.router.navigate(['home']) ;
+      this.router.navigate(['home']) ;
     
   }
 
