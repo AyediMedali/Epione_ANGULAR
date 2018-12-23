@@ -49,7 +49,7 @@ export class LoginDoctorComponent implements OnInit {
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
-          this.router.navigate(['doctor']) ;
+          this.router.navigate(['doctor/homeDoctor']) ;
         }
       }
     )
