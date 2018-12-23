@@ -1,10 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
-import { UserService } from '../services/user.service';
-import { user } from '../entities/user';
 import { Router } from '@angular/router';
 import { PasswordValidation } from './MatchPassword';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import { UserService } from 'src/app/services/user.service';
 //import { PasswordValidation } from './password-validation';
 
 @Component({

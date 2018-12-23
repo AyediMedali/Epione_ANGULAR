@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { user } from '../entities/user';
+import { Observable } from 'rxjs';
+import { doctor } from '../entities/doctor';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +12,7 @@ export class UserService {
   constructor(private http : HttpClient) { }
 
   url = 'http://localhost:18080/Epione-web/rest/users/' ;
+  urlD = "http://localhost:18080/Epione-web/rest/doctors/" ;
 
 
   LoginAdmin(email , password)
@@ -26,13 +29,12 @@ export class UserService {
     console.log(user) ;
     return this.http.post(this.url+"signInPatient" , user) ;
   }
-  
   LoginDoctor(email , password)
   {
     return this.http.post(this.url+"logInDoctor?email="+email+"&password="+password,null);
   }
 
-  getUsers()
-  {
+  getDoctors() : Observable<doctor[]>{
+   return this.http.get<doctor[]>(this.urlD) ;
   }
 }

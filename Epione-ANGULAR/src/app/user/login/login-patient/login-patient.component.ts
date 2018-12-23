@@ -4,11 +4,11 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-doctor',
-  templateUrl: './login-doctor.component.html',
-  styleUrls: ['./login-doctor.component.css']
+  selector: 'app-login-patient',
+  templateUrl: './login-patient.component.html',
+  styleUrls: ['./login-patient.component.css']
 })
-export class LoginDoctorComponent implements OnInit {
+export class LoginPatientComponent implements OnInit {
   ErrorMsg="" ;
   passwordType : string = 'password' ; 
   passwordSeen : boolean = false ; 
@@ -39,17 +39,18 @@ export class LoginDoctorComponent implements OnInit {
     
   }
 
+  
   OnSubmit()
   {
     let email =  this.form.get('email').value ;
     let password = this.form.get('password').value;
-    this.userService.LoginDoctor(email,password).subscribe( 
+    this.userService.LoginPatient(email,password).subscribe( 
       (Data) => {
         if(Data['result']=="Verifier vos donnees"){
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
-          this.router.navigate(['home']) ;
+          this.router.navigate(['patient/homePatient']) ;
         }
       }
     )

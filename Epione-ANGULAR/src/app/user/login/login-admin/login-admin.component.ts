@@ -4,11 +4,11 @@ import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login-patient',
-  templateUrl: './login-patient.component.html',
-  styleUrls: ['./login-patient.component.css']
+  selector: 'app-login-admin',
+  templateUrl: './login-admin.component.html',
+  styleUrls: ['./login-admin.component.css']
 })
-export class LoginPatientComponent implements OnInit {
+export class LoginAdminComponent implements OnInit {
   ErrorMsg="" ;
   passwordType : string = 'password' ; 
   passwordSeen : boolean = false ; 
@@ -43,13 +43,13 @@ export class LoginPatientComponent implements OnInit {
   {
     let email =  this.form.get('email').value ;
     let password = this.form.get('password').value;
-    this.userService.LoginPatient(email,password).subscribe( 
+    this.userService.LoginAdmin(email,password).subscribe( 
       (Data) => {
         if(Data['result']=="Verifier vos donnees"){
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
-          this.router.navigate(['home']) ;
+          this.router.navigate(['admin/homeAdmin']) ;
         }
       }
     )
