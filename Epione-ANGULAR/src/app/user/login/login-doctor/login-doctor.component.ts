@@ -49,7 +49,12 @@ export class LoginDoctorComponent implements OnInit {
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
+            let id=Data['id'];
+            localStorage.setItem('userId',id);
+            localStorage.setItem('role','doctor');
           this.router.navigate(['doctor/homeDoctor']) ;
+          console.log(localStorage.getItem('role')+' / '+localStorage.getItem('userId')) ;
+
         }
       }
     )

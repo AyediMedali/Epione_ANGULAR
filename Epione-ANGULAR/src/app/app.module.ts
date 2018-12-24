@@ -19,6 +19,7 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { HomeDoctorComponent } from './Doctor/home-doctor/home-doctor.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
+import { DoctolibListComponent } from './Patient/doctolib/doctolib-list/doctolib-list.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
     HomeDoctorComponent,
     AdminComponent,
     HomeAdminComponent,
+    DoctolibListComponent
   ],
   imports: [
     BrowserModule,

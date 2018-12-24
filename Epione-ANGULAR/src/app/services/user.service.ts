@@ -17,11 +17,13 @@ export class UserService {
 
   LoginAdmin(email , password)
   {
+    localStorage.setItem('loggedIn','true') ;
     return this.http.post(this.url+"logInAdmin?email="+email+"&password="+password,null);
   }
   
   LoginPatient(email , password)
   {
+    localStorage.setItem('loggedIn','true') ;
     return this.http.post(this.url+"logInPatient?email="+email+"&password="+password,null);
   }
   SignPatient(user : any) 
@@ -31,6 +33,7 @@ export class UserService {
   }
   LoginDoctor(email , password)
   {
+    localStorage.setItem('loggedIn','true') ;
     return this.http.post(this.url+"logInDoctor?email="+email+"&password="+password,null);
   }
 

@@ -12,4 +12,10 @@ export class PatientComponent implements OnInit {
   ngOnInit() {
   }
 
+  Logout()
+  {
+    console.log('logged out before :' +localStorage.getItem('userId')) ;
+    localStorage.clear() ;
+    console.log('logged out after : '+ localStorage.getItem('userId')) ;
+  }
 }
