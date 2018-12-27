@@ -20,6 +20,10 @@ import { HomeDoctorComponent } from './Doctor/home-doctor/home-doctor.component'
 import { AdminComponent } from './admin/admin.component';
 import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
 import { SingleDoctorComponent } from './Patient/single-doctor/single-doctor.component';
+import { DoctolibListComponent } from './Patient/doctolib/doctolib-list/doctolib-list.component';
+import { DoctoDetailComponent } from './patient/doctolib/docto-detail/docto-detail.component';
+import { DemandeAddComponent } from './user/demande-add/demande-add.component';
+
 
 
 @NgModule({
@@ -38,7 +42,10 @@ import { SingleDoctorComponent } from './Patient/single-doctor/single-doctor.com
     HomeDoctorComponent,
     AdminComponent,
     HomeAdminComponent,
-    SingleDoctorComponent
+    SingleDoctorComponent,
+    DoctolibListComponent,
+    DoctoDetailComponent,
+    DemandeAddComponent,
   ],
   imports: [
     BrowserModule,

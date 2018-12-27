@@ -50,7 +50,12 @@ export class LoginPatientComponent implements OnInit {
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
+            let id=Data['id'];
+            localStorage.setItem('userId',id);
+            localStorage.setItem('role','patient');
           this.router.navigate(['patient/homePatient']) ;
+          console.log(localStorage.getItem('role')+' / '+localStorage.getItem('userId')) ;
+
         }
       }
     )

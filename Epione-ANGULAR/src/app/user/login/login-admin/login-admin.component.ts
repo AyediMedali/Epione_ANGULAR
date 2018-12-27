@@ -49,7 +49,11 @@ export class LoginAdminComponent implements OnInit {
           this.ErrorMsg="Incorrect! Please check your informations" ;
         } 
           else {
+            let id=Data['id'];
+            localStorage.setItem('userId',id);
+            localStorage.setItem('role','admin');
           this.router.navigate(['admin/homeAdmin']) ;
+          console.log(localStorage.getItem('role')+' / '+localStorage.getItem('userId')) ;
         }
       }
     )

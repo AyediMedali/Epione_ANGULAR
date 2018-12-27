@@ -14,4 +14,6 @@ export interface doctor{
         ville : string ; 
         numAppart : string ;
     }
+
 }
+

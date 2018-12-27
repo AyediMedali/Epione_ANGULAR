@@ -5,10 +5,10 @@
           <p>
             Ridiculus sociosqu cursus neque cursus curae ante scelerisque vehicula.
           </p>
-          <form method="post" action="http://www.ansonika.com/findoctor/list.html">
+          <form [formGroup]="specSearch" (ngSubmit)="OnSubmit()">
             <div id="custom-search-input">
               <div class="input-group">
-                <input type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">
+                <input formControlName="specialite" type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">
                 <input type="submit" class="btn_search" value="Search">
               </div>
               
