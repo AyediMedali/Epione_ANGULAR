@@ -22,6 +22,10 @@ export class ListDoctorsComponent implements OnInit {
       }
      )
   }
+  getDetails(d )
+  {
+    console.log(d) ;
+  }
 
 
 }

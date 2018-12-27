@@ -14,6 +14,8 @@ import { HomeDoctorComponent } from '../Doctor/home-doctor/home-doctor.component
 import { AdminComponent } from '../admin/admin.component';
 import { HomeAdminComponent } from '../Admin/home-admin/home-admin.component';
 import { DoctolibListComponent } from '../Patient/doctolib/doctolib-list/doctolib-list.component';
+import { DoctoDetailComponent } from '../patient/doctolib/docto-detail/docto-detail.component';
+import { DemandeAddComponent } from '../user/demande-add/demande-add.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'guest/home', pathMatch: 'full'},
@@ -24,11 +26,13 @@ const routes: Routes = [
     {path:'loginDoctor' ,component:LoginDoctorComponent},
     {path:'register', component:RegisterComponent},
     {path:'loginPatient/register', component:RegisterComponent}, 
+    {path:'demandeDoctolib',component:DemandeAddComponent}
    ]},
  {path:'patient',component:PatientComponent, children : [
   {path:'homePatient' , component:HomePatientComponent},
   {path:'listDoctors', component:ListDoctorsComponent},
   {path:'doctolibliste', component:DoctolibListComponent},
+  {path:'doctolibdetails' , component:DoctoDetailComponent}
 
  ]} ,
  {path:'doctor',component:DoctorComponent, children : [

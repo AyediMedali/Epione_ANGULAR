@@ -1,15 +1,23 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { Headers, RequestOptions } from '@angular/http';
 import { doctor } from '../entities/doctor';
+import { demande } from '../entities/demande';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class DoctolibServicesService {
 
+  private headers = new HttpHeaders().set('content-type', 'application/json');
+
   private dataSource = new BehaviorSubject<string>("default message");
   currentData = this.dataSource.asObservable();
+
+
+  public selectedDoctor : doctor ;
 
   constructor(private http : HttpClient) { }
 
@@ -22,4 +30,33 @@ export class DoctolibServicesService {
    {
       this.dataSource.next(data);
    }
+
+   getDoctorDetails( doc : doctor)
+   {
+
+      console.log("bch todkheeel") ;
+
+      let dem : demande ;
+      dem.firstName = doc.firstName ;
+      dem.lastName = doc.lastName ; 
+      dem.specialite = doc.specialite;
+      dem.ville = doc.adesse.city ;
+    return this.http.post<doctor>("http://localhost:18080/Epione-web/rest/doctolib/getDetails/",dem,{headers: this.headers} ) ;
+   }
+
+   addDemande(demande:  demande)
+   {
+     return this.http.post("http://localhost:18080/Epione-web/rest/doctolib/ajoutDemande",demande,{headers: this.headers}) ; 
+   }
+
+
+
+   public getSelectedDoctor(): doctor {
+      return this.selectedDoctor;
+  }
+
+  public setSelectedDoctor(doctor: any): void {
+      this.selectedDoctor = doctor;
+  }
+
 }

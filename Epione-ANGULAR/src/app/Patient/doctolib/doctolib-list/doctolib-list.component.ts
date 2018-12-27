@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctolibServicesService } from 'src/app/services/doctolib-services.service';
+import { doctor } from 'src/app/entities/doctor';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-doctolib-list',
@@ -9,8 +11,9 @@ import { DoctolibServicesService } from 'src/app/services/doctolib-services.serv
 export class DoctolibListComponent implements OnInit {
 
   message: string; 
+  selectedDoctor : doctor ;
 
-  constructor(private doctolibService : DoctolibServicesService) {
+  constructor(private doctolibService : DoctolibServicesService , private router : Router) {
     this.doctolibService.currentData.subscribe((data) => this.message=data);
 
    }
@@ -26,6 +29,14 @@ export class DoctolibListComponent implements OnInit {
       }
      )
   }
+
+  getDetails(d : doctor)
+  {
+    this.doctolibService.setSelectedDoctor(d) ;
+    this.router.navigate(['patient/doctolibdetails']) ;
+  }
+
+
 
 
 }
