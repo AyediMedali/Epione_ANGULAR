@@ -40,7 +40,7 @@ export class DoctolibServicesService {
       dem.firstName = doc.firstName ;
       dem.lastName = doc.lastName ; 
       dem.specialite = doc.specialite;
-      dem.ville = doc.adesse.city ;
+      dem.ville = doc.adresse.ville ;
     return this.http.post<doctor>("http://localhost:18080/Epione-web/rest/doctolib/getDetails/",dem,{headers: this.headers} ) ;
    }
 
