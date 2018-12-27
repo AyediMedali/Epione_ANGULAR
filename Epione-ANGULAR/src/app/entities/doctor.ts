@@ -8,10 +8,10 @@ export interface doctor{
     image : string ; 
     birthDay : Date ; 
     password : string ; 
-    adesse : {
-        street : string ; 
-        postalCode : string ; 
-        city : string ; 
-        AppartNumber : string ;
+    adresse : {
+        rue : string ; 
+        codePostal : string ; 
+        ville : string ; 
+        numAppart : string ;
     }
 }

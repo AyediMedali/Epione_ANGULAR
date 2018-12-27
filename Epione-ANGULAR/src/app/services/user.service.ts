@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { user } from '../entities/user';
 import { Observable } from 'rxjs';
 import { doctor } from '../entities/doctor';
+import { motif } from '../entities/motif';
 
 @Injectable({
   providedIn: 'root'
@@ -37,4 +38,11 @@ export class UserService {
   getDoctors() : Observable<doctor[]>{
    return this.http.get<doctor[]>(this.urlD) ;
   }
+
+  getSingleDoctor(id : number) : Observable<doctor> {
+    console.log(this.urlD+"details?id"+id); 
+   return this.http.get<doctor>(this.urlD+"details?id="+id) ;
+  }
+
+
 }

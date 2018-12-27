@@ -19,6 +19,7 @@ import { DoctorComponent } from './doctor/doctor.component';
 import { HomeDoctorComponent } from './Doctor/home-doctor/home-doctor.component';
 import { AdminComponent } from './admin/admin.component';
 import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
+import { SingleDoctorComponent } from './Patient/single-doctor/single-doctor.component';
 
 
 @NgModule({
@@ -37,6 +38,7 @@ import { HomeAdminComponent } from './Admin/home-admin/home-admin.component';
     HomeDoctorComponent,
     AdminComponent,
     HomeAdminComponent,
+    SingleDoctorComponent
   ],
   imports: [
     BrowserModule,

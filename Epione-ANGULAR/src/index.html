@@ -22,6 +22,7 @@
         <link href="assets/css/menu.css" rel="stylesheet">
         <link href="assets/css/vendors.css" rel="stylesheet">
         <link href="assets/css/icon_fonts/css/all_icons_min.css" rel="stylesheet">
+        <link href="assets/css/date_picker.css" rel="stylesheet">
 
         
       </head>
@@ -46,6 +47,17 @@
   <script src="assets/admin_section/js/admin.js"></script>
   <!-- Custom scripts for this page-->
   <script src="assets/admin_section/js/admin-charts.js"></script>
+
+  <script src="assets/js/bootstrap-datepicker.js"></script>
+	<script>
+		$('#calendar').datepicker({
+			todayHighlight: true,
+			daysOfWeekDisabled: [0],
+			weekStart: 1,
+			format: "yyyy-mm-dd",
+			datesDisabled: ["2017/10/20", "2017/11/21", "2017/12/21", "2018/01/21", "2018/02/21", "2018/03/21"],
+		});
+	</script>
   
   
   
