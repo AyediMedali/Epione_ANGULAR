@@ -17,6 +17,7 @@ import { SingleDoctorComponent } from '../Patient/single-doctor/single-doctor.co
 import { DoctolibListComponent } from '../Patient/doctolib/doctolib-list/doctolib-list.component';
 import { DoctoDetailComponent } from '../patient/doctolib/docto-detail/docto-detail.component';
 import { DemandeAddComponent } from '../user/demande-add/demande-add.component';
+import { AdminListDemandesComponent } from '../Admin/admin-list-demandes/admin-list-demandes.component';
 
 
 const routes: Routes = [
@@ -42,7 +43,8 @@ const routes: Routes = [
   {path:'homeDoctor' , component:HomeDoctorComponent}
  ]} ,
  {path:'admin',component:AdminComponent, children : [
-  {path:'homeAdmin', component:HomeAdminComponent}
+  {path:'homeAdmin', component:HomeAdminComponent},
+  {path:'ListAdminDemandes' , component:AdminListDemandesComponent}
  ]} 
  
 ];

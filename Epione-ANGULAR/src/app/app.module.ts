@@ -23,6 +23,7 @@ import { SingleDoctorComponent } from './Patient/single-doctor/single-doctor.com
 import { DoctolibListComponent } from './Patient/doctolib/doctolib-list/doctolib-list.component';
 import { DoctoDetailComponent } from './patient/doctolib/docto-detail/docto-detail.component';
 import { DemandeAddComponent } from './user/demande-add/demande-add.component';
+import { AdminListDemandesComponent } from './Admin/admin-list-demandes/admin-list-demandes.component';
 
 
 
@@ -46,6 +47,7 @@ import { DemandeAddComponent } from './user/demande-add/demande-add.component';
     DoctolibListComponent,
     DoctoDetailComponent,
     DemandeAddComponent,
+    AdminListDemandesComponent,
   ],
   imports: [
     BrowserModule,

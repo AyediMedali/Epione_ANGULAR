@@ -31,6 +31,19 @@ export class DoctolibServicesService {
       this.dataSource.next(data);
    }
 
+   getDemandes()
+   {
+     return this.http.get<demande[]>("http://localhost:18080/Epione-web/rest/doctolib/getDemande");
+   }
+   deleteDemande(demande:demande)
+   {
+    return this.http.post("http://localhost:18080/Epione-web/rest/doctolib/RejectDemande",demande,{headers:this.headers});
+   }
+   acceptDemande(demande:demande)
+   {
+    return this.http.post("http://localhost:18080/Epione-web/rest/doctolib/AcceptDemande",demande,{headers:this.headers});    
+   }
+
    getDoctorDetails( doc : doctor)
    {
 
