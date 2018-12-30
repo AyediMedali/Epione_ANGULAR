@@ -11,10 +11,25 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SingleDoctorComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private doctorService : UserService,private route:ActivatedRoute, private router:Router) { }
+  constructor(private fb:FormBuilder, private doctorService : UserService,private route:ActivatedRoute, private router:Router) { 
+
+  }
 
   d : doctor ;
   comments = [] ; 
+  i : number = 0 ;
+  hideRating : boolean = false ;  
+  countRating : number ;
+  notePatient : number ; 
+  average : number ; 
+  allRates = [] ; 
+  star1 = false ; 
+  star2 = false ; 
+  star3 = false ; 
+  star4 = false ; 
+  star5 = false ; 
+  msgRating = "" ; 
+  starHide : boolean = false ; 
   identifiant : number ;
   showMenu : boolean = false  ; 
   userId = localStorage.getItem('userId') ;
@@ -26,7 +41,6 @@ export class SingleDoctorComponent implements OnInit {
 
   
   ngOnInit() {
-   
     this.route.params.subscribe(params => {
       this.DoctorId = params['param'] ; 
     })
@@ -38,7 +52,33 @@ export class SingleDoctorComponent implements OnInit {
       if(Data[0] == null){
         this.noComment="No comments" ;
       }
-     console.log("ya rabiiiiiiiiiiiiiiiiii"+Data[0].patient) ;
+    })
+    this.doctorService.countRatingDoctor(this.DoctorId).subscribe((Data)=>{
+       this.countRating = Data ; 
+       if(Data==0)
+       this.countRating = 0 ; 
+       console.log("nombre de notes = "+this.countRating) ; 
+    })
+    this.doctorService.countRatingPatient(this.DoctorId).subscribe((Data)=>{
+      if(Data){
+        this.hideRating = true ; 
+        this.msgRating = "You've already rated this doctor"  ;
+      } else 
+      {
+        this.hideRating = false ; 
+      }
+    })
+    this.doctorService.getPatientRate(this.userId,this.DoctorId).subscribe((Data)=>{
+      this.notePatient=Data ; 
+    })
+    this.doctorService.getAverageRateDoctor(this.DoctorId).subscribe((Data)=>{
+      this.average = Data ;
+      if(Data==null)
+      this.average = -1 ; 
+      console.log("average = "+this.average) ; 
+    })
+    this.doctorService.getAllRatings().subscribe((Data)=>{
+      this.allRates = Data ; 
     })
    
   }
@@ -76,5 +116,122 @@ export class SingleDoctorComponent implements OnInit {
     this.doctorService.modifierComment(com).subscribe((Data)=>{
     })
   }
+
+  star1Change(){
+    if(this.star1==false){
+      this.star1=true ;  
+      this.star2=false ;
+      this.star3=false ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=1 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    } 
+    if((this.star1==true)&&(this.star2=true)){
+      this.star1=true ;
+      this.star2=false ;
+      this.star3=false ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=1 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+  }
+  star2Change(){
+    if(this.star2==false){
+      this.star1=true ;
+      this.star2=true ;
+      this.star3=false ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=2 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    } 
+    if((this.star2==true)&&(this.star3==true)){
+      this.star2=true ;
+      this.star1=true;
+      this.star3=false ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=2 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+  }
+  star3Change(){
+    if(this.star3==false){
+      this.star1=true ;
+      this.star2=true ;
+      this.star3=true ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=3 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+    if((this.star3==true)&&(this.star4==true)){
+      this.star3=true ;
+      this.star2=true ; 
+      this.star1=true ;
+      this.star4=false ;
+      this.star5=false ;
+      this.i=3 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+  }
+  star4Change(){
+    if(this.star4==false){
+      this.star4=true ;
+      this.star5=false; 
+      this.star3=true ; 
+      this.star2=true ;
+      this.star1=true ;
+      this.i=4 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+    if((this.star4==true)&&(this.star5==true)){
+      this.star4=true ;
+      this.star3=true ;
+      this.star2=true ; 
+      this.star1=true ;
+      this.star5=false ;
+      this.i=4 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+      }
+  }
+  star5Change(){
+    if(this.star5==false){
+      this.star5=true;
+      this.star4=true;
+      this.star3=true;
+      this.star2=true;
+      this.star1=true;
+      this.i=5 ;
+      console.log("counttttttttttttttttttttttttt"+this.i) ;
+    }
+  }
+   rate(){
+     let rating : any={
+       "note" : this.i 
+     }
+     this.doctorService.addRating(rating,this.DoctorId).subscribe((Data)=>{
+       this.msgRating = "Thank you for rating this doctor" ;
+       this.countRating = this.countRating + 1 ; 
+       this.hideRating = true ;
+       window.location.reload(); 
+     })
+   }
+
+   fonction(index,index2){
+      if(index==1){
+     this.starHide = true ;}
+     else this.starHide = false ; 
+   }
+
+  
+
+  
+
+   
+
+
 
 }

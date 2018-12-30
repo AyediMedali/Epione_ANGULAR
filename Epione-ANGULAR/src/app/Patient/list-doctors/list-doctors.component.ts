@@ -15,6 +15,7 @@ export class ListDoctorsComponent implements OnInit {
 
   ListDoctors = [] ;
   detailsDoctor : doctor ;
+  countRating : number = 0 ; 
 
   ngOnInit() {
 
@@ -25,10 +26,13 @@ export class ListDoctorsComponent implements OnInit {
       }
      )
   }
+
   getDetails(d )
   {
     console.log(d) ;
   }
+
+  
 
 
 }
