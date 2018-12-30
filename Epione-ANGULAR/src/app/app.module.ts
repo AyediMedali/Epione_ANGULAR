@@ -54,7 +54,8 @@ import { ProfilePatientComponent } from './Patient/profile-patient/profile-patie
     AdminListDemandesComponent,
     HelpPatientComponent,
     ProfilePatientComponent,
-    NgbdModalContent
+    NgbdModalContent,
+    DoctolibLoadingComponent
   ],
   imports: [
     BrowserModule,
