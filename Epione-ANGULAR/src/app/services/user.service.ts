@@ -5,6 +5,8 @@ import { Observable } from 'rxjs';
 import { doctor } from '../entities/doctor';
 import { motif } from '../entities/motif';
 import { commentaire } from '../entities/commentaire';
+import { rating } from '../entities/rating';
+import { patient } from '../entities/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +18,9 @@ export class UserService {
   url = 'http://localhost:18080/Epione-web/rest/users/' ;
   urlD = "http://localhost:18080/Epione-web/rest/doctors/" ;
   urlC = "http://localhost:18080/Epione-web/rest/commentaires/" ; 
+  urlR = "http://localhost:18080/Epione-web/rest/rating/" ;
+  urlP = "http://localhost:18080/Epione-web/rest/patients/" ;
+  urlL = "http://localhost:18080/Epione-web/rest/likes/" ;
 
 
   LoginAdmin(email , password)
@@ -63,6 +68,46 @@ export class UserService {
 
   modifierComment(c:commentaire){
     return this.http.post(this.urlC+"modifier",c) ;
+  }
+
+  addRating(r:rating,idDoctor){
+     return this.http.post(this.urlR+"?idP="+localStorage.getItem('userId')+"&idD="+idDoctor,r) ;
+  }
+
+  countRatingDoctor(idDoctor:number) : Observable<number>{
+    return this.http.get<number>(this.urlR+"count?idD="+idDoctor) ; 
+  }
+
+  countRatingPatient(id) : Observable<boolean>{
+    return this.http.get<boolean>(this.urlR+"countPatient?idP="+localStorage.getItem('userId')+"&idD="+id) ; 
+  }
+
+  getPatientRate(idPatient,idDoctor) : Observable<number>{
+    return this.http.get<number>(this.urlR+"note?idP="+idPatient+"&idD="+idDoctor) ; 
+  }
+
+  getAverageRateDoctor(idDoctor) : Observable<number>{
+    return this.http.get<number>(this.urlR+"average?idD="+idDoctor) ; 
+  }
+
+  getAllRatings() : Observable<rating[]>{
+    return this.http.get<rating[]>(this.urlR+"all") ; 
+  }
+
+  getPatientById() : Observable<patient>{
+    return this.http.get<patient>(this.urlP+"patient?idP="+localStorage.getItem('userId')) ;
+  }
+
+  likeDoctor(idDoctor) {
+    return this.http.post(this.urlL+"like?idP="+localStorage.getItem('userId')+"&idD="+idDoctor,null) ; 
+  }
+
+  existLikeDoctor(idDoctor) : Observable<boolean>{
+    return this.http.get<boolean>(this.urlL+"exist?idP="+localStorage.getItem('userId')+"&idD="+idDoctor);
+  }
+
+  countDoctorLikes(idDoctor) : Observable<number>{
+    return this.http.get<number>(this.urlL+"count?idD="+idDoctor) ; 
   }
 
 

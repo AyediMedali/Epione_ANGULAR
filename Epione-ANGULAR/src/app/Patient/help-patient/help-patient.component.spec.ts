@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SingleDoctorComponent } from './single-doctor.component';
+import { HelpPatientComponent } from './help-patient.component';
 
-describe('SingleDoctorComponent', () => {
-  let component: SingleDoctorComponent;
-  let fixture: ComponentFixture<SingleDoctorComponent>;
+describe('HelpPatientComponent', () => {
+  let component: HelpPatientComponent;
+  let fixture: ComponentFixture<HelpPatientComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ SingleDoctorComponent ]
+      declarations: [ HelpPatientComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(SingleDoctorComponent);
+    fixture = TestBed.createComponent(HelpPatientComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -23,5 +23,3 @@ describe('SingleDoctorComponent', () => {
     expect(component).toBeTruthy();
   });
 });
-
-

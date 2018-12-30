@@ -73,11 +73,12 @@
 			<div class="row">
 				<div class="col-lg-7">
 
-					<div class="strip_list fadeIn" *ngFor="let d of ListDoctors">
-						<a href="#" class="wish_bt"></a>
+					<div class="strip_list fadeIn" *ngFor="let d of ListDoctors ; let j = index ">
+							
 						<figure>
 							<a routerLink="details/{{d.id}}"><img src="/assets/img/{{d.image}}" alt=""></a>
 						</figure>
+						
 						<small>{{d.specialite}}</small>
 						<h3>Dr. {{d.lastName}}</h3>
 						<p>{{d.adresse.numAppart}} {{d.adresse.rue}}, {{d.adresse.ville}}, {{d.adresse.codePostal}}</p>
@@ -97,13 +98,7 @@
 					</div>
 			   </div>
 			   </div>
-
-
-
-
-
 		</div>
-		
 	</main>
 
 
