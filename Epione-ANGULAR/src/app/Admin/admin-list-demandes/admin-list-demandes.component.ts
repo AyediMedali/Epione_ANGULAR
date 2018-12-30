@@ -111,6 +111,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
                 this.addedDoctor = data ;
                 this.loading=false ;
                 console.log(this.addedDoctor) ;
+                this.listDemandes.splice(this.listDemandes.indexOf(this.demande) , 1) ;
                 const modalRef = this.modalService.open(NgbdModalContent,{ size: 'lg' });
       modalRef.componentInstance.doctor = this.addedDoctor;
  
@@ -119,6 +120,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
         }
       }
       ,(error) => {
+        this.loading=false ;
         alert('An error has occured') ;
       }
     )

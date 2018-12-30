@@ -39,6 +39,7 @@ const routes: Routes = [
   {path:'help', component: HelpPatientComponent} , 
   {path:'profilePatient', component: ProfilePatientComponent} , 
   {path:'listDoctors/details/:param', component:SingleDoctorComponent},
+  {path:'homePatient/details/:param', component:SingleDoctorComponent},
   {path:'doctolibliste', component:DoctolibListComponent},
   {path:'doctolibdetails' , component:DoctoDetailComponent}
 
