@@ -19,6 +19,7 @@ import { DoctoDetailComponent } from '../patient/doctolib/docto-detail/docto-det
 import { DemandeAddComponent } from '../user/demande-add/demande-add.component';
 import { AdminListDemandesComponent } from '../Admin/admin-list-demandes/admin-list-demandes.component';
 import { HelpPatientComponent } from '../patient/help-patient/help-patient.component';
+import { ProfilePatientComponent } from '../Patient/profile-patient/profile-patient.component';
 
 
 const routes: Routes = [
@@ -36,6 +37,7 @@ const routes: Routes = [
   {path:'homePatient' , component:HomePatientComponent},
   {path:'listDoctors', component:ListDoctorsComponent},
   {path:'help', component: HelpPatientComponent} , 
+  {path:'profilePatient', component: ProfilePatientComponent} , 
   {path:'listDoctors/details/:param', component:SingleDoctorComponent},
   {path:'doctolibliste', component:DoctolibListComponent},
   {path:'doctolibdetails' , component:DoctoDetailComponent}
