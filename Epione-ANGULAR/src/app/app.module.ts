@@ -26,7 +26,6 @@ import { DemandeAddComponent } from './user/demande-add/demande-add.component';
 import { AdminListDemandesComponent, NgbdModalContent } from './Admin/admin-list-demandes/admin-list-demandes.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DoctolibLoadingComponent } from './doctolib-loading/doctolib-loading.component';
-import { AdminListDemandesComponent } from './Admin/admin-list-demandes/admin-list-demandes.component';
 import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 
 
