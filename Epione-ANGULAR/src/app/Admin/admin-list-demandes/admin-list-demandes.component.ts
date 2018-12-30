@@ -1,8 +1,47 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, OnChanges, Input } from '@angular/core';
 import { DoctolibServicesService } from 'src/app/services/doctolib-services.service';
 import { demande } from 'src/app/entities/demande';
 import { Response } from '@angular/http';
 import { doctor } from 'src/app/entities/doctor';
+import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+
+@Component({
+  selector: 'ngbd-modal-content',
+  template: `
+  
+    <div class="modal-header">
+      <h4 class="modal-title">Doctor was added successfully</h4>
+      <button type="button" class="close" aria-label="Close" (click)="activeModal.dismiss('Cross click')">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+    <div class="modal-body">
+    <div class="list_general">
+  <ul>
+    <li>
+      <figure><img src={{doctor.image}} alt=""></figure>
+      <h4>{{doctor.firstName}} {{doctor.lastName}}</h4>
+      <ul class="booking_details">
+        <li><strong>Speciality</strong> {{doctor.specialite}}</li>
+        <li><strong>City</strong> {{doctor.adresse.ville}}</li>
+        <li><strong>Email</strong>{{doctor.email}}</li>
+      </ul>
+    </li>
+  </ul>
+</div>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-dark" (click)="activeModal.close('Close click')">Close</button>
+    </div>
+  `
+})
+export class NgbdModalContent {
+  @Input() doctor;
+
+  constructor(public activeModal: NgbActiveModal) {}
+}
+
+
 
 @Component({
   selector: 'app-admin-list-demandes',
@@ -12,6 +51,7 @@ import { doctor } from 'src/app/entities/doctor';
 export class AdminListDemandesComponent implements OnInit,OnChanges {
 
 
+  loading : boolean = false  ;
   demande : demande ={
     id : 0 ,
     email : "" ,
@@ -22,7 +62,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
   } ; 
   addedDoctor : Object ;
   listDemandes= [] ;
-  constructor(private serviceDoctolib : DoctolibServicesService) { }
+  constructor(private serviceDoctolib : DoctolibServicesService ,private modalService:NgbModal) { }
 
   ngOnInit() {
    this.serviceDoctolib.getDemandes().subscribe(
@@ -58,6 +98,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
   }
   Approve(dem)
   {
+    this.loading=true ;
     this.demande = dem ;
     this.serviceDoctolib.acceptDemande(this.demande).subscribe(
       (data) => {
@@ -68,10 +109,17 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
             if(data['id']>0)
             {
                 this.addedDoctor = data ;
+                this.loading=false ;
                 console.log(this.addedDoctor) ;
+                const modalRef = this.modalService.open(NgbdModalContent,{ size: 'lg' });
+      modalRef.componentInstance.doctor = this.addedDoctor;
+ 
             }
           }
         }
+      }
+      ,(error) => {
+        alert('An error has occured') ;
       }
     )
   }
