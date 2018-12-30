@@ -23,7 +23,9 @@ import { SingleDoctorComponent } from './Patient/single-doctor/single-doctor.com
 import { DoctolibListComponent } from './Patient/doctolib/doctolib-list/doctolib-list.component';
 import { DoctoDetailComponent } from './patient/doctolib/docto-detail/docto-detail.component';
 import { DemandeAddComponent } from './user/demande-add/demande-add.component';
-import { AdminListDemandesComponent } from './Admin/admin-list-demandes/admin-list-demandes.component';
+import { AdminListDemandesComponent, NgbdModalContent } from './Admin/admin-list-demandes/admin-list-demandes.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { DoctolibLoadingComponent } from './doctolib-loading/doctolib-loading.component';
 import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from './Patient/profile-patient/profile-patient.component';
 
@@ -60,9 +62,12 @@ import { ProfilePatientComponent } from './Patient/profile-patient/profile-patie
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    
+    NgbModule    
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  entryComponents: [
+    NgbdModalContent
+  ]
 })
 export class AppModule { }

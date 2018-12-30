@@ -1,3 +1,4 @@
+
   <div class="container-fluid">
     <!-- Breadcrumbs-->
     <ol class="breadcrumb">
@@ -20,6 +21,9 @@
     </div>
     <div class="list_general">
       <ul *ngFor="let d of listDemandes">
+          <div *ngIf="loading">
+              <app-doctolib-loading></app-doctolib-loading>
+          </div>
         <li>
           <figure><img src="../../../assets/img/profile.jpg" alt=""></figure>
           <h4>{{d.firstName}} {{d.lastName}}</h4>
