@@ -54,6 +54,7 @@ import { ProfilePatientComponent } from './Patient/profile-patient/profile-patie
     AdminListDemandesComponent,
     HelpPatientComponent,
     ProfilePatientComponent,
+
   ],
   imports: [
     BrowserModule,

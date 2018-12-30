@@ -110,5 +110,9 @@ export class UserService {
     return this.http.get<number>(this.urlL+"count?idD="+idDoctor) ; 
   }
 
+  getCommentPatient(id) : Observable<commentaire[]>{
+    return this.http.get<commentaire[]>(this.urlC+"patient?idP="+id) ; 
+    } 
+
 
 }
