@@ -15,6 +15,12 @@
 
       <aside class="col-xl-3 col-lg-4" id="sidebar">
         <div class="box_profile">
+            <div  style="position : absolute ; padding-left: 200px; padding-top: 10px ; color : #e55185" [hidden]="hideUnlike">
+                <i class="icon-heart-empty" (click)="likeDoctor()" ></i>
+              </div>
+              <div  style="position : absolute ; padding-left: 200px ; padding-top: 10px ; padding-bottom: 40px ; color : #e55185" [hidden]="hideLike">
+                  <i class="icon-heart" ></i>
+                </div>
           <figure>
             <img src="assets/img/{{d.image}}" alt="" class="img-fluid">
           </figure>
@@ -76,7 +82,7 @@
           <!-- <a href="badges.html" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="assets/img/badges/badge_1.svg" width="15" height="15" alt=""></a>-->
 
           <ul class="statistic">
-            <li>854 Views</li>
+            <li>{{countLikes}} Likes</li>
             <li>124 Patients</li>
           </ul>
           <ul class="contacts">
@@ -430,7 +436,7 @@
 
                     <div *ngIf="r.patient.id==c.patient.id&&r.doctor.id==c.doctor.id">
                       
-                      {{ fonction(j) }}
+                      {{ fonction(j,i) }}
                     
 
                       <div class="rev-content">

@@ -15,6 +15,9 @@ export class SingleDoctorComponent implements OnInit {
 
   }
 
+  hideUnlike : boolean = false ; 
+  hideLike : boolean = false ; 
+
   d : doctor ;
   comments = [] ; 
   i : number = 0 ;
@@ -22,6 +25,7 @@ export class SingleDoctorComponent implements OnInit {
   countRating : number ;
   notePatient : number ; 
   average : number ; 
+  countLikes : number ; 
   allRates = [] ; 
   star1 = false ; 
   star2 = false ; 
@@ -41,9 +45,30 @@ export class SingleDoctorComponent implements OnInit {
 
   
   ngOnInit() {
+
     this.route.params.subscribe(params => {
       this.DoctorId = params['param'] ; 
     })
+
+    this.doctorService.countDoctorLikes(this.DoctorId).subscribe((Data)=>{
+       this.countLikes = Data ; 
+       if(Data==null||Data==0){
+         this.countLikes = 0 ; 
+       }
+    })
+
+    this.doctorService.existLikeDoctor(this.DoctorId).subscribe((Data)=>{
+      console.log("like exist ===== "+Data) ; 
+      if(Data==false){
+        this.hideLike = true ; 
+        this.hideUnlike = false ;
+        
+      }else {
+        this.hideLike = false ; 
+        this.hideUnlike = true ;
+      }
+    })
+
     this.doctorService.getSingleDoctor(this.DoctorId).subscribe((Data) => {
       this.d = Data ; 
     })
@@ -226,7 +251,12 @@ export class SingleDoctorComponent implements OnInit {
      else this.starHide = false ; 
    }
 
-  
+  likeDoctor(){
+    this.doctorService.likeDoctor(this.DoctorId).subscribe((Data)=>{
+      this.hideLike = false ; 
+      this.hideUnlike = true ; 
+    })
+  }
 
   
 

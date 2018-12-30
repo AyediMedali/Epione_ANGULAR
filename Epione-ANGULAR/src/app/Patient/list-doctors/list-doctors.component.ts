@@ -16,6 +16,8 @@ export class ListDoctorsComponent implements OnInit {
   ListDoctors = [] ;
   detailsDoctor : doctor ;
   countRating : number = 0 ; 
+  hideUnlike : boolean = false ; 
+  hideLike : boolean = false ; 
 
   ngOnInit() {
 
@@ -25,12 +27,17 @@ export class ListDoctorsComponent implements OnInit {
         console.log("doctors"+Data);
       }
      )
+
+     this.hideLike = true ; 
+    
   }
 
   getDetails(d )
   {
     console.log(d) ;
   }
+
+
 
   
 

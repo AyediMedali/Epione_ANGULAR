@@ -24,6 +24,7 @@ import { DoctolibListComponent } from './Patient/doctolib/doctolib-list/doctolib
 import { DoctoDetailComponent } from './patient/doctolib/docto-detail/docto-detail.component';
 import { DemandeAddComponent } from './user/demande-add/demande-add.component';
 import { AdminListDemandesComponent } from './Admin/admin-list-demandes/admin-list-demandes.component';
+import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 
 
 
@@ -48,6 +49,7 @@ import { AdminListDemandesComponent } from './Admin/admin-list-demandes/admin-li
     DoctoDetailComponent,
     DemandeAddComponent,
     AdminListDemandesComponent,
+    HelpPatientComponent,
   ],
   imports: [
     BrowserModule,

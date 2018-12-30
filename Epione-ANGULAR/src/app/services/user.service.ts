@@ -6,6 +6,7 @@ import { doctor } from '../entities/doctor';
 import { motif } from '../entities/motif';
 import { commentaire } from '../entities/commentaire';
 import { rating } from '../entities/rating';
+import { patient } from '../entities/patient';
 
 @Injectable({
   providedIn: 'root'
@@ -18,6 +19,8 @@ export class UserService {
   urlD = "http://localhost:18080/Epione-web/rest/doctors/" ;
   urlC = "http://localhost:18080/Epione-web/rest/commentaires/" ; 
   urlR = "http://localhost:18080/Epione-web/rest/rating/" ;
+  urlP = "http://localhost:18080/Epione-web/rest/patients/" ;
+  urlL = "http://localhost:18080/Epione-web/rest/likes/" ;
 
 
   LoginAdmin(email , password)
@@ -89,6 +92,22 @@ export class UserService {
 
   getAllRatings() : Observable<rating[]>{
     return this.http.get<rating[]>(this.urlR+"all") ; 
+  }
+
+  getPatientById() : Observable<patient>{
+    return this.http.get<patient>(this.urlP+"patient?idP="+localStorage.getItem('userId')) ;
+  }
+
+  likeDoctor(idDoctor) {
+    return this.http.post(this.urlL+"like?idP="+localStorage.getItem('userId')+"&idD="+idDoctor,null) ; 
+  }
+
+  existLikeDoctor(idDoctor) : Observable<boolean>{
+    return this.http.get<boolean>(this.urlL+"exist?idP="+localStorage.getItem('userId')+"&idD="+idDoctor);
+  }
+
+  countDoctorLikes(idDoctor) : Observable<number>{
+    return this.http.get<number>(this.urlL+"count?idD="+idDoctor) ; 
   }
 
 
