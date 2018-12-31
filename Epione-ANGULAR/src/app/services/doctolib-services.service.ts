@@ -4,6 +4,7 @@ import { Observable, BehaviorSubject } from 'rxjs';
 import { Headers, RequestOptions } from '@angular/http';
 import { doctor } from '../entities/doctor';
 import { demande } from '../entities/demande';
+import { specialiteDoctolib } from '../entities/specialiteDoctolib';
 
 
 @Injectable({
@@ -60,6 +61,11 @@ export class DoctolibServicesService {
    addDemande(demande:  demande)
    {
      return this.http.post("http://localhost:18080/Epione-web/rest/doctolib/ajoutDemande",demande,{headers: this.headers}) ; 
+   }
+
+   getSpecialites()
+   {
+     return this.http.get<specialiteDoctolib[]>("http://localhost:18080/Epione-web/rest/doctolib/getAllSpecialites");
    }
 
 

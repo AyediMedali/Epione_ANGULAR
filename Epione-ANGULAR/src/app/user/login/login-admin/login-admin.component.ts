@@ -41,6 +41,7 @@ export class LoginAdminComponent implements OnInit {
 
   OnSubmit()
   {
+    console.log("is admin here ? :"+this.userService.getIsAdminLoggedIn()) ;
     let email =  this.form.get('email').value ;
     let password = this.form.get('password').value;
     this.userService.LoginAdmin(email,password).subscribe( 
@@ -54,6 +55,8 @@ export class LoginAdminComponent implements OnInit {
             localStorage.setItem('role','admin');
           this.router.navigate(['admin/homeAdmin']) ;
           console.log(localStorage.getItem('role')+' / '+localStorage.getItem('userId')) ;
+          console.log("is admin here ? :"+this.userService.getIsAdminLoggedIn()) ;
+
         }
       }
     )

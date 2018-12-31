@@ -16,6 +16,7 @@ export class HomePatientComponent implements OnInit {
 
   message : string ;
   ListDoctors = [] ;
+  specialites = [] ;
   doctor :doctor ;
   specSearch = this.fb.group({
     specialite: [''] 
@@ -48,6 +49,11 @@ export class HomePatientComponent implements OnInit {
         console.log(this.doctor) ;
       }
      )
+     this.doctolibService.getSpecialites().subscribe(
+      Data => {
+        this.specialites = Data;
+      }
+    )
   }
 
   OnSubmit()

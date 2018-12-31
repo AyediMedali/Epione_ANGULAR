@@ -13,6 +13,11 @@ import { patient } from '../entities/patient';
 })
 export class UserService {
 
+  private isPatientLoggedIn = false ; 
+  private isAdminLoggedIn = false ; 
+  private isDoctorLoggedIn = false ; 
+
+
   constructor(private http : HttpClient) { }
 
   url = 'http://localhost:18080/Epione-web/rest/users/' ;
@@ -26,12 +31,14 @@ export class UserService {
   LoginAdmin(email , password)
   {
     localStorage.setItem('loggedIn','true') ;
+    this.isAdminLoggedIn=true;
     return this.http.post(this.url+"logInAdmin?email="+email+"&password="+password,null);
   }
   
   LoginPatient(email , password)
   {
     localStorage.setItem('loggedIn','true') ;
+    this.isPatientLoggedIn=true ; 
     return this.http.post(this.url+"logInPatient?email="+email+"&password="+password,null);
   }
   SignPatient(user : any) 
@@ -42,6 +49,7 @@ export class UserService {
   LoginDoctor(email , password)
   {
     localStorage.setItem('loggedIn','true') ;
+    this.isDoctorLoggedIn=true ;
     return this.http.post(this.url+"logInDoctor?email="+email+"&password="+password,null);
   }
 
@@ -114,5 +122,33 @@ export class UserService {
     return this.http.get<commentaire[]>(this.urlC+"patient?idP="+id) ; 
     } 
 
+
+
+
+
+  get getIsPatientLoggedIn()
+  {
+    return this.isPatientLoggedIn;
+  }
+  setIsPatientLoggedIn(value :boolean)
+  {
+    this.isPatientLoggedIn=value;
+  }
+  get getIsDoctorLoggedIn()
+  {
+    return this.isDoctorLoggedIn;
+  }
+  setIsDoctorLoggedIn(value :boolean)
+  {
+    this.isDoctorLoggedIn=value;
+  }
+   getIsAdminLoggedIn()
+  {
+    return this.isAdminLoggedIn;
+  }
+  setIsAdminLoggedIn(value :boolean)
+  {
+    this.isAdminLoggedIn=value;
+  }
 
 }

@@ -8,7 +8,10 @@
           <form [formGroup]="specSearch" (ngSubmit)="OnSubmit()">
             <div id="custom-search-input">
               <div class="input-group">
-                <input formControlName="specialite" type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">
+                <select formControlName="specialite" class=" search-query" placeholder="Ex. Name, Specialization ....">
+                  <option *ngFor="let spec of specialites" [value]="spec.lien">{{spec.nom}}</option>
+                </select>
+                <!--<input formControlName="specialite" type="text" class=" search-query" placeholder="Ex. Name, Specialization ....">-->
                 <input type="submit" class="btn_search" value="Search">
               </div>
               
