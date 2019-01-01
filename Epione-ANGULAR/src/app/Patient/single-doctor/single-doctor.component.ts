@@ -3,6 +3,8 @@ import { UserService } from 'src/app/services/user.service';
 import { doctor } from 'src/app/entities/doctor';
 import { ActivatedRoute, Router } from '@angular/router';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CookieService } from 'ngx-cookie-service';
+import { DoctolibServicesService } from 'src/app/services/doctolib-services.service';
 
 @Component({
   selector: 'app-single-doctor',
@@ -11,7 +13,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 })
 export class SingleDoctorComponent implements OnInit {
 
-  constructor(private fb:FormBuilder, private doctorService : UserService,private route:ActivatedRoute, private router:Router) { 
+  constructor(private fb:FormBuilder, private doctorService : UserService,private route:ActivatedRoute, private router:Router,private cookieService:CookieService , private doctolibService:DoctolibServicesService) { 
 
   }
 
@@ -71,6 +73,7 @@ export class SingleDoctorComponent implements OnInit {
 
     this.doctorService.getSingleDoctor(this.DoctorId).subscribe((Data) => {
       this.d = Data ; 
+      this.doctolibService.addSpecialiteCookie(this.d.specialite) ;
     })
     this.doctorService.getCommentaireDoctor(this.DoctorId).subscribe((Data)=>{
       this.comments = Data ; 
@@ -106,6 +109,7 @@ export class SingleDoctorComponent implements OnInit {
       this.allRates = Data ; 
     })
    
+console.log(JSON.parse(this.cookieService.get("specialite"))) ;
   }
 
   OnSubmit(){

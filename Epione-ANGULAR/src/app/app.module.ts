@@ -28,6 +28,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DoctolibLoadingComponent } from './doctolib-loading/doctolib-loading.component';
 import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from './Patient/profile-patient/profile-patient.component';
+import { CookieService } from 'ngx-cookie-service';
+
 
 
 
@@ -66,7 +68,7 @@ import { ProfilePatientComponent } from './Patient/profile-patient/profile-patie
     ReactiveFormsModule,
     NgbModule    
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent],
   entryComponents: [
     NgbdModalContent

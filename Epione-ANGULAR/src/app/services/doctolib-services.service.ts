@@ -5,6 +5,7 @@ import { Headers, RequestOptions } from '@angular/http';
 import { doctor } from '../entities/doctor';
 import { demande } from '../entities/demande';
 import { specialiteDoctolib } from '../entities/specialiteDoctolib';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Injectable({
@@ -20,7 +21,7 @@ export class DoctolibServicesService {
 
   public selectedDoctor : doctor ;
 
-  constructor(private http : HttpClient) { }
+  constructor(private http : HttpClient , private cookieService:CookieService) { }
 
 
   getDoctolib(specialite:string) : Observable<doctor[]>{
@@ -76,6 +77,62 @@ export class DoctolibServicesService {
 
   public setSelectedDoctor(doctor: any): void {
       this.selectedDoctor = doctor;
+  }
+
+  public addSpecialiteCookie(specialite)
+  {
+    if(this.cookieService.get("specialite").length>1)
+    {
+      let found = false ;
+      var cookie = this.cookieService.get("specialite");
+      var spcs = JSON.parse(cookie);
+      for(var i=0 ; i<spcs.length;i++)
+      {
+        if(spcs[i].specialite==specialite) 
+        {
+          found = true ;
+          spcs[i].number++ ;
+        }
+      }
+      if (!found)
+      {
+        var newS= {"specialite":specialite,"number":1} ;
+        console.log("*********************DKHAL********************************") ;
+        console.log("*********************OBJECT :********************************") ;
+        console.log(newS) ;
+        console.log("*********************LISTE********************************") ;
+        console.log(spcs);
+
+        spcs.push(newS) ;
+      }
+      this.cookieService.set("specialite",JSON.stringify(spcs)) ;
+
+    }
+    else {
+      console.log("**********************NON********************************") ;
+
+      var arraySpecs =  [{"specialite":specialite,"number":1}];
+        this.cookieService.set("specialite",JSON.stringify(arraySpecs));
+    }
+  }
+  getCookieSpecialite()
+  {
+    var spcs = JSON.parse(this.cookieService.get("specialite")) ;
+    if(spcs){
+    var max = spcs[0] ;
+    for(var i=1 ; i<spcs.length;i++)
+    {
+      if(spcs[i].number>max.number)
+      {
+        max=spcs[i];
+      }
+    }
+    return max.specialite ;
+  }
+  else {
+    return 0 ;
+  }
+
   }
 
 }

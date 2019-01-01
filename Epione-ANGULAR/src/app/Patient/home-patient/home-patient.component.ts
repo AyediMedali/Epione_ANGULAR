@@ -4,6 +4,7 @@ import { DoctolibServicesService } from 'src/app/services/doctolib-services.serv
 import { UserService } from 'src/app/services/user.service';
 import { Router } from '@angular/router';
 import { doctor } from 'src/app/entities/doctor';
+import { CookieService } from 'ngx-cookie-service';
 
 
 @Component({
@@ -14,6 +15,7 @@ import { doctor } from 'src/app/entities/doctor';
 export class HomePatientComponent implements OnInit {
 
 
+  specialiteCookie ;
   message : string ;
   ListDoctors = [] ;
   specialites = [] ;
@@ -22,13 +24,19 @@ export class HomePatientComponent implements OnInit {
     specialite: [''] 
   })
 
-  constructor(private doctorService : UserService ,private fb:FormBuilder , private doctolibService:DoctolibServicesService , private router : Router)
+  constructor(private doctorService : UserService ,private fb:FormBuilder , private doctolibService:DoctolibServicesService , private router : Router , private cookieService:CookieService)
   {
     this.doctolibService.currentData.subscribe((data) => this.message=data);
   }
 
 
   ngOnInit() {
+    if(this.doctolibService.getCookieSpecialite()!=0)
+    {
+      this.specialiteCookie = this.doctolibService.getCookieSpecialite() ;
+    }
+
+
     this.doctorService.getDoctors().subscribe(
       (Data) => {
         this.ListDoctors = Data ; 
@@ -46,7 +54,16 @@ export class HomePatientComponent implements OnInit {
             }
           }
         }
+        this.ListDoctors=this.ListDoctors.filter(
+          (data) => {
+            console.log("******************************cooookie") ;
+            console.log(this.specialiteCookie) ;
+            if(data.specialite.toUpperCase()==this.specialiteCookie.toUpperCase()) return true ;
+          }
+        ).splice(0,2);
         console.log(this.doctor) ;
+        console.log("*********************Liste******************") ;
+        console.log(this.ListDoctors)
       }
      )
      this.doctolibService.getSpecialites().subscribe(
