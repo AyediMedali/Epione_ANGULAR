@@ -28,6 +28,7 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { DoctolibLoadingComponent } from './doctolib-loading/doctolib-loading.component';
 import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from './Patient/profile-patient/profile-patient.component';
+import { ContactDoctorComponent } from './Patient/contact-doctor/contact-doctor.component';
 
 
 
@@ -55,7 +56,8 @@ import { ProfilePatientComponent } from './Patient/profile-patient/profile-patie
     HelpPatientComponent,
     ProfilePatientComponent,
     NgbdModalContent,
-    DoctolibLoadingComponent
+    DoctolibLoadingComponent,
+    ContactDoctorComponent
   ],
   imports: [
     BrowserModule,

@@ -114,5 +114,13 @@ export class UserService {
     return this.http.get<commentaire[]>(this.urlC+"patient?idP="+id) ; 
     } 
 
+  getAllRatesByPatient(id) : Observable<rating[]>{
+    return this.http.get<rating[]>(this.urlR+"allPatient?idP="+id) ; 
+  }
+
+  updateProfilePatient(user : patient){
+    return this.http.post(this.urlP,user)  ; 
+  }
+
 
 }

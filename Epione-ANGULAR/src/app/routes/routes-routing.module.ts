@@ -20,6 +20,7 @@ import { DemandeAddComponent } from '../user/demande-add/demande-add.component';
 import { AdminListDemandesComponent } from '../Admin/admin-list-demandes/admin-list-demandes.component';
 import { HelpPatientComponent } from '../patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from '../Patient/profile-patient/profile-patient.component';
+import { ContactDoctorComponent } from '../Patient/contact-doctor/contact-doctor.component';
 
 
 const routes: Routes = [
@@ -39,6 +40,8 @@ const routes: Routes = [
   {path:'help', component: HelpPatientComponent} , 
   {path:'profilePatient', component: ProfilePatientComponent} , 
   {path:'listDoctors/details/:param', component:SingleDoctorComponent},
+  {path:'listDoctors/contact/:param', component:ContactDoctorComponent},
+  {path:'profilePatient/details/:param', component:SingleDoctorComponent},
   {path:'doctolibliste', component:DoctolibListComponent},
   {path:'doctolibdetails' , component:DoctoDetailComponent}
 
