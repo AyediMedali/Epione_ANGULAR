@@ -4,6 +4,7 @@ import { demande } from 'src/app/entities/demande';
 import { Response } from '@angular/http';
 import { doctor } from 'src/app/entities/doctor';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -62,7 +63,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
   } ; 
   addedDoctor : Object ;
   listDemandes= [] ;
-  constructor(private serviceDoctolib : DoctolibServicesService ,private modalService:NgbModal) { }
+  constructor(private serviceDoctolib : DoctolibServicesService ,private modalService:NgbModal,private excel : ExcelService) { }
 
   ngOnInit() {
    this.serviceDoctolib.getDemandes().subscribe(
@@ -124,5 +125,10 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
         alert('An error has occured') ;
       }
     )
+  }
+  exportToExcel()
+  {
+    console.log("exported")
+    this.excel.exportToExcel() ;
   }
 }

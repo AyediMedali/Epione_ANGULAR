@@ -58,7 +58,9 @@ export class HomePatientComponent implements OnInit {
           (data) => {
             console.log("******************************cooookie") ;
             console.log(this.specialiteCookie) ;
-            if(data.specialite.toUpperCase()==this.specialiteCookie.toUpperCase()) return true ;
+            var s = data.specialite.split(" ").join("-");
+             s = s.split("é").join("e");
+            if(s.toUpperCase()==this.specialiteCookie.toUpperCase()) return true ;
           }
         ).splice(0,2);
         console.log(this.doctor) ;

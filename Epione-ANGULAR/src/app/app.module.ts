@@ -29,6 +29,7 @@ import { DoctolibLoadingComponent } from './doctolib-loading/doctolib-loading.co
 import { HelpPatientComponent } from './patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from './Patient/profile-patient/profile-patient.component';
 import { CookieService } from 'ngx-cookie-service';
+import { ExcelService } from './services/excel.service';
 
 
 
@@ -68,7 +69,7 @@ import { CookieService } from 'ngx-cookie-service';
     ReactiveFormsModule,
     NgbModule    
   ],
-  providers: [CookieService],
+  providers: [CookieService,ExcelService],
   bootstrap: [AppComponent],
   entryComponents: [
     NgbdModalContent
