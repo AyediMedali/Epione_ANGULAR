@@ -4,6 +4,7 @@ import { demande } from 'src/app/entities/demande';
 import { Response } from '@angular/http';
 import { doctor } from 'src/app/entities/doctor';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ExcelService } from 'src/app/services/excel.service';
 
 @Component({
   selector: 'ngbd-modal-content',
@@ -62,7 +63,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
   } ; 
   addedDoctor : Object ;
   listDemandes= [] ;
-  constructor(private serviceDoctolib : DoctolibServicesService ,private modalService:NgbModal) { }
+  constructor(private serviceDoctolib : DoctolibServicesService ,private modalService:NgbModal,private excel : ExcelService) { }
 
   ngOnInit() {
    this.serviceDoctolib.getDemandes().subscribe(
@@ -111,6 +112,7 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
                 this.addedDoctor = data ;
                 this.loading=false ;
                 console.log(this.addedDoctor) ;
+                this.listDemandes.splice(this.listDemandes.indexOf(this.demande) , 1) ;
                 const modalRef = this.modalService.open(NgbdModalContent,{ size: 'lg' });
       modalRef.componentInstance.doctor = this.addedDoctor;
  
@@ -119,8 +121,14 @@ export class AdminListDemandesComponent implements OnInit,OnChanges {
         }
       }
       ,(error) => {
+        this.loading=false ;
         alert('An error has occured') ;
       }
     )
+  }
+  exportToExcel()
+  {
+    console.log("exported")
+    this.excel.exportToExcel() ;
   }
 }

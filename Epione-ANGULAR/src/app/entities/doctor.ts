@@ -15,6 +15,7 @@ export interface doctor{
         numAppart : string ;
     }
     dateCreation? : Date;
+    presentation? : string;
 
 }
 

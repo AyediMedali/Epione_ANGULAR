@@ -21,6 +21,9 @@ import { AdminListDemandesComponent } from '../Admin/admin-list-demandes/admin-l
 import { HelpPatientComponent } from '../patient/help-patient/help-patient.component';
 import { ProfilePatientComponent } from '../Patient/profile-patient/profile-patient.component';
 import { ContactDoctorComponent } from '../Patient/contact-doctor/contact-doctor.component';
+import { AuthPatientGuard } from '../auth-patient.guard';
+import { AuthDoctorGuard } from '../auth-doctor.guard';
+import { AuthAdminGuard } from '../auth-admin.guard';
 
 
 const routes: Routes = [
@@ -35,6 +38,7 @@ const routes: Routes = [
     {path:'demandeDoctolib',component:DemandeAddComponent}
    ]},
  {path:'patient',component:PatientComponent, children : [
+
   {path:'homePatient' , component:HomePatientComponent},
   {path:'listDoctors', component:ListDoctorsComponent},
   {path:'help', component: HelpPatientComponent} , 
@@ -43,16 +47,34 @@ const routes: Routes = [
   {path:'listDoctors/contact/:param', component:ContactDoctorComponent},
   {path:'profilePatient/details/:param', component:SingleDoctorComponent},
   {path:'doctolibliste', component:DoctolibListComponent},
-  {path:'doctolibdetails' , component:DoctoDetailComponent}
+  {path:'doctolibdetails' , component:DoctoDetailComponent},
 
- ]} ,
+  {path: '', redirectTo: 'homePatient' , pathMatch:'full'},
+  {path:'homePatient' , component:HomePatientComponent ,canActivate:[AuthPatientGuard]},
+  {path:'listDoctors', component:ListDoctorsComponent ,canActivate:[AuthPatientGuard]},
+  {path:'help', component: HelpPatientComponent ,canActivate:[AuthPatientGuard]} , 
+  {path:'profilePatient', component: ProfilePatientComponent ,canActivate:[AuthPatientGuard]} , 
+  {path:'listDoctors/details/:param', component:SingleDoctorComponent ,canActivate:[AuthPatientGuard]},
+  {path:'homePatient/details/:param', component:SingleDoctorComponent ,canActivate:[AuthPatientGuard]},
+  {path:'doctolibliste', component:DoctolibListComponent ,canActivate:[AuthPatientGuard]},
+  {path:'doctolibdetails' , component:DoctoDetailComponent ,canActivate:[AuthPatientGuard]}
+
+
+ ],
+ canActivate:[AuthPatientGuard]
+} ,
  {path:'doctor',component:DoctorComponent, children : [
-  {path:'homeDoctor' , component:HomeDoctorComponent}
- ]} ,
+  {path:'homeDoctor' , component:HomeDoctorComponent ,canActivate:[AuthDoctorGuard]}
+ ],
+ canActivate:[AuthDoctorGuard]
+} ,
  {path:'admin',component:AdminComponent, children : [
-  {path:'homeAdmin', component:HomeAdminComponent},
-  {path:'ListAdminDemandes' , component:AdminListDemandesComponent}
- ]} 
+  {path: '', redirectTo: 'homeAdmin' , pathMatch:'full'},
+  {path:'homeAdmin', component:HomeAdminComponent ,canActivate:[AuthAdminGuard]},
+  {path:'ListAdminDemandes' , component:AdminListDemandesComponent ,canActivate:[AuthAdminGuard]}
+ ],
+ canActivate:[AuthAdminGuard]
+} 
  
 ];
 

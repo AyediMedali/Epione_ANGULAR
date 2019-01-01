@@ -5,19 +5,16 @@
       <li class="breadcrumb-item">
         <a href="#">Dashboard</a>
       </li>
-      <li class="breadcrumb-item active">Bookings</li>
+      <li class="breadcrumb-item active">Doctolib Requests</li>
     </ol>
   <div class="box_general">
     <div class="header_box">
-      <h2 class="d-inline-block">Bookings List</h2>
+      <h2 class="d-inline-block">Request List</h2>
       <div class="filter">
-        <select name="orderby" class="selectbox">
-          <option value="Any status">Any status</option>
-          <option value="Approved">Approved</option>
-          <option value="Pending">Pending</option>
-          <option value="Cancelled">Cancelled</option>
-        </select>
+        <a (click)="exportToExcel()" class="btn_1 gray approve"><i class="fa fa-fw fa-check-circle-o"></i> Export to Excel </a>
+
       </div>
+      
     </div>
     <div class="list_general">
       <ul *ngFor="let d of listDemandes">
