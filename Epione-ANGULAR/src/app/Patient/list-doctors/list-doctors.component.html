@@ -76,7 +76,7 @@
 					<div class="strip_list fadeIn" *ngFor="let d of ListDoctors ; let j = index ">
 							
 						<figure>
-							<a routerLink="details/{{d.id}}"><img src="/assets/img/{{d.image}}" alt=""></a>
+							<a routerLink="details/{{d.id}}"><img src="{{d.image}}" alt=""></a>
 						</figure>
 						
 						<small>{{d.specialite}}</small>
