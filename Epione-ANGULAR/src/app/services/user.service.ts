@@ -7,6 +7,7 @@ import { motif } from '../entities/motif';
 import { commentaire } from '../entities/commentaire';
 import { rating } from '../entities/rating';
 import { patient } from '../entities/patient';
+import { message } from '../entities/message';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,7 @@ export class UserService {
   urlR = "http://localhost:18080/Epione-web/rest/rating/" ;
   urlP = "http://localhost:18080/Epione-web/rest/patients/" ;
   urlL = "http://localhost:18080/Epione-web/rest/likes/" ;
+  urlM  = "http://localhost:18080/Epione-web/rest/messages" ; 
 
 
   LoginAdmin(email , password)
@@ -128,6 +130,18 @@ export class UserService {
 
   updateProfilePatient(user : patient){
     return this.http.post(this.urlP,user)  ; 
+  }
+
+  sendMessageDoctor(idDoctor,msg : message){
+    return this.http.post(this.urlM+"?patientId="+localStorage.getItem('userId')+"&doctorId="+idDoctor,msg) ; 
+  }
+
+  getPatientMessages() : Observable<message[]>{
+    return this.http.get<message[]>(this.urlM+"?patientId="+localStorage.getItem('userId')) ; 
+  }
+
+  getCountMessagesPatient() : Observable<number> {
+    return this.http.get<number>(this.urlM+"/count?patientId="+localStorage.getItem('userId')) ; 
   }
 
 

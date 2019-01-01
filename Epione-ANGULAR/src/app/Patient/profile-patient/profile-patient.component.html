@@ -49,102 +49,148 @@
             </div>
             
             <hr>
-            
-            <!-- /profile -->
-            <div class="indent_title_in">
-              <i class="pe-7s-note2"></i>
-              <h3>My comments</h3>
-            </div>
-            <div class="wrapper_indent">
+<!------------------------------------------------------------------------------------>
+            <div role="tablist" class="add_bottom_45 accordion" id="reccomendations">
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5 class="mb-0">
+                      <a data-toggle="collapse" href="#collapseOne_reccomendations" aria-expanded="true"><i class="indicator icon_plus_alt2"></i>
+                        <div class="indent_title_in">
+                            <i class="pe-7s-note2"></i>
+                            <h3>My comments</h3>
+                          </div></a>
+                    </h5>
+                  </div>
+      
+                  <div id="collapseOne_reccomendations" class="collapse" role="tabpanel" data-parent="#reccomendations">
+                    <div class="card-body">
+                        <div class="wrapper_indent">
 
-              <div [hidden]="showNoCommentDiv">
-                you have no comment 
-              </div>
-
-
-              <div class="reviews-container" *ngFor="let c of listeComments">
-                  <div class="review-box clearfix">
-                      <figure class="rev-thumb"><img style="width : 80px" src="/assets/img/{{c.patient.image}}" alt="">
-                      </figure>
-                      <div class="rev-content">
-                       
-                        <div class="rev-info">
-                          You left a comment for <a routerLink="details/{{c.doctor.id}}">DR. {{c.doctor.lastName}} </a>- {{c.date | date}} : 
-                        </div>
-                        <div class="rev-text">
-                          <p>
-                            {{c.content}}
-                          </p>
-                        </div>
-                      </div>
-                    </div>
-              </div>
-
-
-                            <!-- /row-->
-            </div>
-            <!-- /wrapper indent -->
-
-            <hr>
-
-            <div class="indent_title_in">
-              <i class="pe-7s-star"></i>
-              <h3>My Ratings</h3>
+                            <div [hidden]="showNoCommentDiv">
+                              you have no comment 
+                            </div>
               
-            </div>
-            <div class="wrapper_indent">
+              
+                            <div class="reviews-container" *ngFor="let c of listeComments">
+                                <div class="review-box clearfix">
+                                    <figure class="rev-thumb"><img style="width : 80px" src="/assets/img/{{c.patient.image}}" alt="">
+                                    </figure>
+                                    <div class="rev-content">
+                                     
+                                      <div class="rev-info">
+                                        You left a comment for <a routerLink="details/{{c.doctor.id}}">DR. {{c.doctor.lastName}} </a>- {{c.date | date}} : 
+                                      </div>
+                                      <div class="rev-text">
+                                        <p>
+                                          {{c.content}}
+                                        </p>
+                                      </div>
+                                    </div>
+                                  </div>
+                            </div>
+              
+              
+                                          <!-- /row-->
+                          </div>
+                        </div>
+                  </div>
+                </div>
+                <!-- /card -->
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" href="#collapseTwo_reccomendations" aria-expanded="false">
+                        <i class="indicator icon_plus_alt2"></i> <div class="indent_title_in">
+                            <i class="pe-7s-star"></i>
+                            <h3>My Ratings</h3>
+                            
+                          </div>
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseTwo_reccomendations" class="collapse" role="tabpanel" data-parent="#reccomendations">
+                    <div class="card-body">
+                        <div class="wrapper_indent">
              
-              <ul *ngFor="let r of listeRatings">
-                <li>
-                  <div *ngIf="r.note==1">
-                    <span class="rating">
-                        <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
-                    </span>
-                   
-                    - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 1 out of 5 stars
+                            <ul *ngFor="let r of listeRatings">
+                              <li>
+                                <div *ngIf="r.note==1">
+                                  <span class="rating">
+                                      <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                  </span>
+                                 
+                                  - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 1 out of 5 stars
+                              </div>
+                              <div *ngIf="r.note==2">
+                                  <span class="rating">
+                                      <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                  </span>
+                                
+                                  - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 2 out of 5 stars
+                              </div>
+                              <div *ngIf="r.note==3">
+                                  <span class="rating">
+                                      <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i>
+                                  </span>
+                                
+                                  - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 3 out of 5 stars
+                              </div>
+                              <div *ngIf="r.note==4">
+                                  <span class="rating">
+                                      <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
+                                  </span>
+                                
+                                  - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 4 out of 5 stars
+                              </div>
+                              <div *ngIf="r.note==5">
+                                  <span class="rating">
+                                      <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i>
+                                  </span>
+                                
+                                  - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 5 out of 5 stars
+                              </div>
+                              </li>
+                            </ul>
+                          </div> </div>
+                  </div>
                 </div>
-                <div *ngIf="r.note==2">
-                    <span class="rating">
-                        <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i><i class="icon_star"></i>
-                    </span>
-                  
-                    - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 2 out of 5 stars
+                <!-- /card -->
+                <div class="card">
+                  <div class="card-header" role="tab">
+                    <h5 class="mb-0">
+                      <a class="collapsed" data-toggle="collapse" href="#collapseThree_reccomendations" aria-expanded="false">
+                        <i class="indicator icon_plus_alt2"></i><div class="indent_title_in">
+                            <i class="pe-7s-mail"></i>
+                            <h3>My messages</h3>
+                            <p>You have sent {{countMsgP}} messages.</p>
+                          </div>
+                      </a>
+                    </h5>
+                  </div>
+                  <div id="collapseThree_reccomendations" class="collapse" role="tabpanel" data-parent="#reccomendations">
+                    <div class="card-body">
+                        <div class="wrapper_indent">
+                            <table>
+                              <tr *ngFor="let m of listeMessages">
+                                <td><figure><img style="width : 50px" src="{{m.doctor.image}}" alt=""></figure></td>
+                                <td style="padding-left: 25px ; ">
+                                  <small>   You sent a message to DR. {{m.doctor.lastName}}  - {{m.date | date}} </small>
+                             <p><i class="icon-spin5 animate-spin" *ngIf="m.seen==false" style="color: orange"></i><i class="icon-ok" *ngIf="m.seen==true" style="color: green"></i> {{m.content}}  -   
+                               <small *ngIf="m.seen==false" style="color: orange">unseen</small>
+                               <small *ngIf="m.seen==true" style="color: green">seen</small>
+                             </p>
+                            </td>
+                              </tr>
+                            </table>
+                           
+                          </div>
+                     </div>
+                  </div>
                 </div>
-                <div *ngIf="r.note==3">
-                    <span class="rating">
-                        <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i>
-                    </span>
-                  
-                    - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 3 out of 5 stars
-                </div>
-                <div *ngIf="r.note==4">
-                    <span class="rating">
-                        <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star"></i>
-                    </span>
-                  
-                    - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 4 out of 5 stars
-                </div>
-                <div *ngIf="r.note==5">
-                    <span class="rating">
-                        <i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i><i class="icon_star voted"></i>
-                    </span>
-                  
-                    - You gave <strong><a style="color : #78d0c4" routerLink="details/{{r.doctor.id}}">Dr. {{r.doctor.lastName}} {{r.doctor.firstName}}</a></strong> 5 out of 5 stars
-                </div>
-                </li>
-              </ul>
-            </div>
-            <!--  End wrapper indent -->
+                <!-- /card -->
+              </div>
 
-            <hr>
 
-            <div class="indent_title_in">
-              <i class="pe-7s-mail"></i>
-              <h3>My messages</h3>
-            </div>
-            <div class="wrapper_indent">
-             
-            </div>
 
             <div class="text-center">
               <button type="submit" (click)="showSection1()" class="btn_1 outline">

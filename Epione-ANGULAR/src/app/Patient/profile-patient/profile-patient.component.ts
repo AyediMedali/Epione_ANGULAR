@@ -19,10 +19,11 @@ export class ProfilePatientComponent implements OnInit {
   connectedPatient : patient ; 
   listeComments = [] ; 
   listeRatings = [] ; 
+  listeMessages = []  ;
   showNoCommentDiv : boolean = true ; 
   showNoRatesDiv : boolean = true ;
   showDiv2 : boolean = true ; 
-
+  countMsgP : number ; 
   imageURL : string = "" ;
   fileToUpload : File = null ; 
 
@@ -42,6 +43,18 @@ export class ProfilePatientComponent implements OnInit {
       if(Data){
       this.listeRatings = Data ; }
       else this.showNoRatesDiv = false ; 
+    })
+    this.patientService.getPatientMessages().subscribe((Data)=>{
+      this.listeMessages = Data ; 
+      console.log("liste messages = "+this.listeMessages) ;
+    })
+
+    this.patientService.getCountMessagesPatient().subscribe((Data)=>{
+      if(Data){
+      this.countMsgP = Data ; }
+      if(Data==0){
+        this.countMsgP = 0 ; 
+      }
     })
   }
 
