@@ -78,7 +78,7 @@
         <div class="strip_list fadeIn" *ngFor="let d of ListDoctors">
           <a href="#" class="wish_bt"></a>
           <figure>
-            <a href="#"><img src="{{d.image}}" alt=""></a>
+            <a routerLink="homePatient"><img src="{{d.image}}" alt=""></a>
           </figure>
           <small>{{d.specialite}}</small>
           <h3>Dr. {{d.lastName}}</h3>
@@ -87,9 +87,7 @@
           <i class="icon_star voted"></i><i class="icon_star"></i><i class="icon_star"></i> <small>(145)</small></span>
           <a href="" data-toggle="tooltip" data-placement="top" data-original-title="Badge Level" class="badge_list_1"><img src="img/badges/badge_1.svg" width="15" height="15" alt=""></a>
           <ul>
-            <li><a (click)="getDetails(d)"  class="btn_listing">View details</a></li>
-            <li><a (click)="getDetails(d)" href="#">Contact</a></li>
-            <li><a (click)="getDetails(d)" href="#">Book now</a></li>
+							<li><a (click)="getDetails()" class="btn_listing">View details</a></li>
           </ul>
         </div>
        </div>

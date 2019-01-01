@@ -34,10 +34,10 @@ export class DoctolibListComponent implements OnInit {
      )
   }
 
-  getDetails(d : doctor)
+  getDetails()
   {
-    this.doctolibService.setSelectedDoctor(d) ;
-    this.router.navigate(['patient/doctolibdetails']) ;
+   // this.doctolibService.setSelectedDoctor(d) ;
+    this.router.navigate(['guest/demandeDoctolib']) ;
   }
 
 

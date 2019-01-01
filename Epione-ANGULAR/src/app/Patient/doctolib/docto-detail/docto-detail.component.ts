@@ -12,7 +12,7 @@ import { doctor } from 'src/app/entities/doctor';
 export class DoctoDetailComponent implements OnInit {
 
   selectedDoctor : doctor;
-  doctor : doctor ; 
+  doctor:Object ; 
   
   constructor(private doctolibService : DoctolibServicesService) { 
     this.selectedDoctor = doctolibService.getSelectedDoctor() ; 

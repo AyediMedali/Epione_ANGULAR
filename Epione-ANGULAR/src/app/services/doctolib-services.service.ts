@@ -46,7 +46,7 @@ export class DoctolibServicesService {
     return this.http.post("http://localhost:18080/Epione-web/rest/doctolib/AcceptDemande",demande,{headers:this.headers});    
    }
 
-   getDoctorDetails( doc : doctor)
+   getDoctorDetails( doc : doctor) :Observable<doctor>
    {
 
       console.log("bch todkheeel") ;
@@ -56,6 +56,8 @@ export class DoctolibServicesService {
       dem.lastName = doc.lastName ; 
       dem.specialite = doc.specialite;
       dem.ville = doc.adresse.ville ;
+      console.log(this.http.post<doctor>("http://localhost:18080/Epione-web/rest/doctolib/getDetails/",dem,{headers: this.headers} ) )
+
     return this.http.post<doctor>("http://localhost:18080/Epione-web/rest/doctolib/getDetails/",dem,{headers: this.headers} ) ;
    }
 
