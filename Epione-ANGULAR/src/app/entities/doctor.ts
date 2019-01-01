@@ -16,6 +16,18 @@ export interface doctor{
     }
     dateCreation? : Date;
     presentation? : string;
+    expertises?: {
+        id: number ;
+        nom : string;
+    }
+    formations?: {
+        date: Date ;
+        diplome : string ;
+    }
+    tarifs?: {
+        tarif : number ; 
+        description : string ;
+    }
 
 }
 
